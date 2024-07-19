@@ -1,16 +1,19 @@
 from flask import Flask, jsonify, send_from_directory, request
+import os
 
-app = Flask(__name__, static_folder='../my-react-app/build', static_url_path='/')
+app = Flask(__name__, static_folder='frontend', static_url_path='/')
 
 @app.route('/')
 def serve():
+    full_path = os.path.join(app.static_folder, 'index.html')
+    print(full_path)
     return send_from_directory(app.static_folder, 'index.html')
 
-def get_data():
-    data = {
+def get_info():
+    info = {
         "members": ["Member1", "Member2", "Member3"]
     }
-    return jsonify(data)
+    return jsonify(info)
 
 @app.route('/survey', methods=["GET", "POST"])
 def recommend():

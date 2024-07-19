@@ -9,11 +9,12 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('/home');
-      setData(response.data.members);
-    };
-    fetchData();
-  }, []);
+      const response = await axios.get("http://localhost:5000")
+      const info = await response.json()
+      setData(info.data)
+      console.log(info.data)
+    }
+  })
 
   return (
     <Fragment>

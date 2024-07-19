@@ -49,7 +49,7 @@ function Survey() {
                             </div>
                         )}
                         <br /><br /><br />
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     <div className="card-footer text-muted">
                         2 days ago
