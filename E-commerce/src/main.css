@@ -1,0 +1,36 @@
+body {
+    background-color: grey;
+}
+
+#homePage {
+    text-align: center;
+    visibility: hidden;
+}
+
+#headerHome {
+    width: 100%;
+}
+
+#search_container {
+    display: inline-flex;
+}
+
+#navbaritems .nav-item .nav-link {
+    color: gray
+}
+#navbaritems .nav-item:hover .nav-link {
+    color: white; 
+}
+
+#survey_container {
+    background-color: white;
+    border: 2px solid black;
+    height: 100%;
+    width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+#inputlabel {
+    padding-top: 10px;
+}
