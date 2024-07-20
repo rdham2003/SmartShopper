@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-function HomePage() {
+function HomePage(props) {
     return (
         <Fragment>
             <style>{'body { background-color: grey; }'}</style>
@@ -52,7 +52,71 @@ function HomePage() {
                     </nav>
                 </header>
                 <div id="shopBody">
-
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card">
+                            <form action="/takesurvey" method="POST">
+                                <div class="card-body">
+                                    <h5 class="card-title">Click here to take a quick survey to recommend products most suited to your taste</h5>
+                                    <button type="submit" class="btn btn-primary">Start survey</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+             
+                        <br />
+                        <p class="fs-1">Highest Rated</p>
+                        <div id="recommend_container">
+                            {props.rated.map((item, index) => (
+                                <div key={index} className="card" style={{ width: '18rem' }}>
+                                <img src="..." className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{item[0]}</h5>
+                                    <p className="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                    </p>
+                                </div>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">{item[1]}</li>
+                                    <li className="list-group-item">{item[2]}</li>
+                                    <li className="list-group-item">A third item</li>
+                                </ul>
+                                <div className="card-body">
+                                    <a href="#" className="card-link">Card link</a>
+                                    <a href="#" className="card-link">Another link</a>
+                                </div>
+                                </div>
+                            ))}
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <p class="fs-1">Hot Deals 🔥</p>
+                        <div id="recommend_container">
+                        {props.rated.map((item, index) => (
+                                <div key={index} className="card" style={{ width: '18rem' }}>
+                                <img src="..." className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{item[0]}</h5>
+                                    <p className="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                    </p>
+                                </div>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">{item[1]}</li>
+                                    <li className="list-group-item">{item[2]}</li>
+                                    <li className="list-group-item">A third item</li>
+                                </ul>
+                                <div className="card-body">
+                                    <a href="#" className="card-link">Card link</a>
+                                    <a href="#" className="card-link">Another link</a>
+                                </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </Fragment>

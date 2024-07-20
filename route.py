@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, send_from_directory, request
+from flask_cors import CORS
 import os
 
-app = Flask(__name__, static_folder='frontend', static_url_path='/')
+app = Flask(__name__, static_folder='frontend/dist', static_url_path='/')
+CORS(app)
 
 @app.route('/')
 def serve():
@@ -9,11 +11,13 @@ def serve():
     print(full_path)
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route('/api/data')
 def get_info():
-    info = {
-        "members": ["Member1", "Member2", "Member3"]
+    data = {
+        "Deals": ["Name",29.99,4.6],
+        "Rated": ["Name",29.99,4.6],
     }
-    return jsonify(info)
+    return jsonify(data)
 
 @app.route('/survey', methods=["GET", "POST"])
 def recommend():
