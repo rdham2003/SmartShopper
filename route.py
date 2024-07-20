@@ -22,6 +22,7 @@ def get_info():
 
 @app.route('/survey', methods=["GET", "POST"])
 def recommend():
+    survey = []
     age = request.form.get("age")
     gender = request.form.get("gender")
     traveling = request.form.get("Traveling")
@@ -33,8 +34,25 @@ def recommend():
     gaming = request.form.get("Gaming")
     outdoors = request.form.get("Outdoor Activities")
     music = request.form.get("Music and Concerts")
+    survey.append(int(age))
+    if gender == 'male':
+        survey.append(1)
+        survey.append(0)
+    else:
+        survey.append(0)
+        survey.append(1)
+    survey.append(1) if traveling == 'on' else survey.append(0)
+    survey.append(1) if reading == 'on' else survey.append(0)
+    survey.append(1) if fitness == 'on' else survey.append(0)
+    survey.append(1) if cooking == 'on' else survey.append(0)
+    survey.append(1) if arts_crafts == 'on' else survey.append(0)
+    survey.append(1) if movie_tvshow == 'on' else survey.append(0)
+    survey.append(1) if gaming == 'on' else survey.append(0)
+    survey.append(1) if outdoors == 'on' else survey.append(0)
+    survey.append(1) if music == 'on' else survey.append(0)
+    print(survey)
     print(age,gender,traveling,reading,fitness,cooking,arts_crafts,movie_tvshow,gaming,outdoors,music)
-    return "Form submitted successfully"
+    return send_from_directory(app.static_folder, 'index.html')
     
 
 if __name__ == "__main__":

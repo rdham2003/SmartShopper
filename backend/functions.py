@@ -26,7 +26,6 @@ def hotDeals():
     for i in range(10):
         newProdList.append(prodList[random.randint(0,199)][:3])
     return newProdList
-    
         
         
         

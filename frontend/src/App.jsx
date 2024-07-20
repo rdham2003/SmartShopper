@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 import axios from 'axios';
 import HomePage from './HomePage';
+import {createBrowserRouter,RouterProvider, Route, Link} from "react-router-dom";
 import Survey from './Survey';
 
 function App() {
@@ -23,9 +24,9 @@ function App() {
 
   console.log(data.Deals)
   console.log(data.Rated)
+
   return (
     <Fragment>
-      {/* <Survey /> */}
       <HomePage rated={data.Rated} deals={data.Deals}/>
     </Fragment>
   );

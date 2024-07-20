@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Fragment } from 'react';
+import Survey from './Survey';
 
 function HomePage(props) {
+
+    const deals = [0.5,0.6,0.7,0.8]
+
+    function takeSurvey(){
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("survey_container").style.display = "block"
+      }
+      
     return (
         <Fragment>
             <style>{'body { background-color: grey; }'}</style>
@@ -55,19 +64,16 @@ function HomePage(props) {
                     <div class="card">
                         <div class="card-body">
                             <div class="card">
-                            <form action="/takesurvey" method="POST">
                                 <div class="card-body">
                                     <h5 class="card-title">Click here to take a quick survey to recommend products most suited to your taste</h5>
-                                    <button type="submit" class="btn btn-primary">Start survey</button>
+                                    <button type="submit" class="btn btn-primary" onClick={takeSurvey}>Start survey</button>
                                 </div>
-                            </form>
                             </div>
                         </div>
                         <br />
                         <br />
-             
                         <br />
-                        <p class="fs-1">Highest Rated</p>
+                        <p class="fs-1">Highest Rated ⭐</p>
                         <div id="recommend_container">
                             {props.rated.map((item, index) => (
                                 <div key={index} className="card" style={{ width: '18rem' }}>
@@ -91,14 +97,14 @@ function HomePage(props) {
                         <br />
                         <p class="fs-1">Hot Deals 🔥</p>
                         <div id="recommend_container">
-                        {props.rated.map((item, index) => (
+                        {props.deals.map((item, index) => (
                                 <div key={index} className="card" style={{ width: '18rem' }}>
                                 <img src="..." className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{item[0]}</h5>
                                 </div>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">${item[1]}</li>
+                                    <li className="list-group-item"><s>${item[1]}</s> ${Math.round((item[1] * (deals[Math.round(Math.random() * 3)])) * 100) / 100}</li>
                                     <li className="list-group-item">Rating: {item[2]} ⭐</li>
                                 </ul>
                                 <div className="card-body">
@@ -111,6 +117,7 @@ function HomePage(props) {
                     </div>
                 </div>
             </div>
+            <Survey />
         </Fragment>
     );
 }

@@ -1,0 +1,17 @@
+Age: 18-25: Gaming, Music, Fashion, Fitness
+     26-40: Personal Care, Utilities, Kitchen
+     41-55: Home, Outdoors, TV
+     56-65: Home, Utilities
+
+     Male: Gaming, Fitness, Outdoors
+     Female: Kitchen, Home, Personal Care
+
+     Traveling- Outdoors
+     Reading- Home, Personal Care
+     Fitness- Fitness, Outdoors
+     Cooking- Kitchen
+     Arts & Crafts- Utilities, Fashion
+     Movies & Shows- TV
+     Gaming- Gaming
+     Outdoors- Outdoors
+     Music- Music

@@ -5,10 +5,10 @@ function Survey() {
     
     const survey = ["Traveling", "Reading", "Fitness", "Cooking", "Arts & Crafts", "Watching Movies or TV Shows", "Gaming", "Outdoor Activities", "Music and Concerts"];
     
-    function addChecked(event) {
-        console.log(checked)
-        event.target.checked ? (checked < 3 ? setChecked(checked+1) : event.preventDefault()) : setChecked(checked-1)
-    }
+    // function addChecked(event) {
+    //     console.log(checked)
+    //     event.target.checked ? (checked < 3 ? setChecked(checked+1) : event.preventDefault()) : setChecked(checked-1)
+    // }
 
     return (
         <form action="/survey" method="POST">
@@ -43,7 +43,7 @@ function Survey() {
                         {survey.map((survey) =>
                             <div className="input-group mb-3">
                                 <div className="input-group-text">
-                                    <input className="form-check-input mt-0" type="checkbox" id={survey} name={survey} onClick={addChecked} disabled={checked === 3 && !document.getElementById(survey).checked}/>
+                                    <input className="form-check-input mt-0" type="checkbox" id={survey} name={survey}/>
                                 </div>
                                 <label className="form-control" htmlFor={survey}>{survey}</label>
                             </div>
