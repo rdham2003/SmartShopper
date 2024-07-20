@@ -2,17 +2,18 @@ import pandas as pd
 import numpy as np
 import random
 
-samples = 100
-shipping = ["3-5 days", "5-7 days"]
-funny = []
+samples = 200
+# shipping = ["3-5 days", "5-7 days"]
+# funny = []
 
-for i in range(samples):
-    funny.append(shipping[random.randint(0,1)])
+# for i in range(samples):
+#     funny.append(shipping[random.randint(0,1)])
 
-df = pd.read_csv("E-commerce\datasets\products.csv")
+df = pd.read_csv("datasets\products.csv")
 
-df = df.drop(columns=["Img file path"], axis=1)
+df = df.drop(columns=["Review"], axis=1)
+df.insert(2, "Review", np.round(np.random.uniform(3.5,5.0, size=samples),1))
 
 print(df.head())
 
-df.to_csv("E-commerce\E-commerce\src\\assets\products.csv", index=False)
+df.to_csv("datasets\products.csv", index=False)

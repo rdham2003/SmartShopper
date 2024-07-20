@@ -5,7 +5,7 @@ import HomePage from './HomePage';
 import Survey from './Survey';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ "Deals": [], "Rated": [] });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +21,12 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(data)
+  console.log(data.Deals)
+  console.log(data.Rated)
   return (
     <Fragment>
       {/* <Survey /> */}
-      <HomePage rated={[[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3]]} deals={[[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3],[1,2,3]]}/>
+      <HomePage rated={data.Rated} deals={data.Deals}/>
     </Fragment>
   );
 }

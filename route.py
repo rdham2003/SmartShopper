@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 import os
+from backend.functions import highestRated, hotDeals
 
 app = Flask(__name__, static_folder='frontend/dist', static_url_path='/')
 CORS(app)
@@ -14,8 +15,8 @@ def serve():
 @app.route('/api/data')
 def get_info():
     data = {
-        "Deals": ["Name",29.99,4.6],
-        "Rated": ["Name",29.99,4.6],
+        "Deals": hotDeals(),
+        "Rated": highestRated()
     }
     return jsonify(data)
 
