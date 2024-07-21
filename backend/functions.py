@@ -1,4 +1,7 @@
 import random
+import pickle
+
+surveyModel = pickle.load(open("model.pkl", "rb"))
 
 def highestRated():
     with(open('datasets/products.csv', 'r')) as products:
@@ -27,7 +30,15 @@ def hotDeals():
         newProdList.append(prodList[random.randint(0,199)][:3])
     return newProdList
         
-        
+def recommendProd():
+    with(open('datasets/products.csv', 'r')) as products:
+        prodList = products.readlines()[1:]
+        # print(len(prodList))
+        for i in range(len(prodList)):
+            prod = prodList[i].split(',')
+            prod[-1] = prod[-1][:-1]
+            prodList[i] = prod
+    
         
         
 if __name__ == '__main__':
