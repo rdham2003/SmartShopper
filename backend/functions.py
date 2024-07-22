@@ -1,5 +1,6 @@
 import random
 import pickle
+import numpy as np
 
 surveyModel = pickle.load(open("model.pkl", "rb"))
 
@@ -30,17 +31,62 @@ def hotDeals():
         newProdList.append(prodList[random.randint(0,199)][:3])
     return newProdList
         
-def recommendProd():
+def recommendProd(survArr):
     with(open('datasets/products.csv', 'r')) as products:
         prodList = products.readlines()[1:]
         # print(len(prodList))
+        prods = []
+        prod_tags = []
         for i in range(len(prodList)):
             prod = prodList[i].split(',')
             prod[-1] = prod[-1][:-1]
             prodList[i] = prod
+            prods.append(prodList[i][:3])
+            prod_tags.append(prodList[i][3:11])
+        print(prods)
+        print(prod_tags)
+    clustered_tags = {
+        'Gaming': ["Mouse", "Computing", "LED Display", "Smartwatch", "Headset", "Digital", "WiFi", "USB", "Camera", "Thermometer", "Bluetooth", "WiFi Extender", "Tablets", "Smartphones", "Devices", "HD Video", "VR", "PC Gaming", "Virtual Reality", "In-Ear", "Over-Ear", "Gaming", "Console", "Laptop", "Router", "RGB", "Video", "Immersive", "Gaming Experience", "Gaming Community"],
+        'TV': ["Home Theater", "Projector", "Touchscreen"],
+        'Music': ["Audio", "Speaker", "Earbuds", "Headphones", "Portable", "Over-Ear", "In-Ear", "Wireless", "Music", "Bluetooth", "Noise Cancelling"],
+        'Home': ["Air Purifier", "Home Theater", "Appliances", "Ceiling Fan", "Vacuum", "Smoke Detector", "Bedroom", "Doorbell", "Garage Door Opener", "Door Lock", "Keyless", "Photo Frame", "Blanket", "Heating", "Cooling", "Thermostat", "Portable", "Compact", "Cleaning", "Storage", "Furniture", "Smart Home", "Home Gym", "Mattress", "Dimmable", "Rugged", "Tools", "Secure", "Shelter", "Home", "Comfort"],
+        'Kitchen': ["Kettle", "Espresso", "Purification", "Bottle", "Cooking", "Coffee Maker", "Blender", "Hand Mixer", "Grilling", "Baking", "Cookware", "Pots and Pans", "Instant Pot", "Multi-Cooker", "Pressure Cooker", "Crockpot", "Coffee Grinder", "Food Preparation", "Drinkware", "Utensils", "Non-Stick", "Slow-Cooking", "Kitchen", "Barista", "Culinary", "Recipes", "Meals"],
+        'Fitness': ["Hydration", "Weightlifting", "Exercise", "Running", "Workout", "Walking", "Cardio", "Biking", "Cycling", "Yoga", "Stretching", "Weights", "Fitness", "Athletics", "Sports", "Activewear", "Strength", "Performance", "Agility", "Mobility", "Training", "Fitness Tracker", "Endurance", "Body Composition", "Heart Rate", "Hydration Tracker", "Jump Rope", "Muscle", "Gym"],
+        'Fashion': ["Clothing", "Footwear", "Accessories", "Eyewear", "Fashion", "Beachwear", "Leggings", "Shoes", "Boots", "Shaver", "Hair Dryer", "Hair Straightener", "Grooming", "Grooming Tools", "Stylish", "Trendy", "Casual", "Professional", "Lifestyle", "Outerwear", "Gloves", "Beachwear", "Leggings"],
+        'Outdoors': ["Trekking", "Backpacking", "Climbing", "Hiking", "Camping", "Snowboarding", "Hammocking", "Rock Climbing", "Mountaineering", "Winter", "Outdoor", "Beach", "Adventure", "Survival", "Gear", "Lantern", "Helmet", "Rainwear", "Insulation", "Camping Gear", "Backpack", "Towel", "UV Protection"],
+        'Personal Care': ["Oral Care", "Shaving", "Brushing", "Dental Care", "Personal Care", "Grooming", "Grooming Tools", "Hygiene", "Health", "Clean Air", "Sleep", "Relaxation", "Massage", "Comfortable"],
+        'Utilities': ["Large", "Equipment", "Stability", "Capture", "Images", "Drinks", "Cafe", "Healthy Eating", "Study", "Leak Proof", "Bag", "Backpack", "Soft", "Warmth", "Comfortable", "Waterproof", "Lightweight", "Durable", "Insulated", "Stainless Steel", "Green", "Blue", "Gray", "White", "Black", "Ergonomic", "Adjustable", "Leak Proof", "Easy to Clean", "Portable", "Handheld", "Fast Charging", "Rechargeable", "Battery Operated", "Multi-Use", "Utility", "Convenience", "Secure", "Non-Slip", "Fast Boil", "Energy Efficient", "Solar Power", "HEPA Filter", "Electric", "High Speed", "WiFi Plug", "Smart", "Smart Home", "Smartwatch", "Noise Cancelling"]
+    }
+    surveyTags = list(clustered_tags.keys())
+    survArr = np.array(survArr).reshape(1, -1)
+    modelPred = surveyModel.predict(survArr)[0]
+    rec_tags = []
+    for i in range(len(surveyTags)):
+        if modelPred[i] == 1:
+            rec_tags.append(surveyTags[i])
+    recProdList = []
+    for i in range(len(rec_tags)):
+        for j in range(len(clustered_tags[rec_tags[i]])):
+            for k in range(len(prod_tags)):
+                if clustered_tags[rec_tags[i]][j] in prod_tags[k]:
+                    recProdList.append(prods[k])
+                    prods.remove(prods[k])
+                    prod_tags.remove(prod_tags[k])
+                    break
+    finalProdList = []
+    for i in range(10):
+        prodKey = random.randint(0, len(recProdList)-1)
+        finalProdList.append(recProdList[prodKey])
+        recProdList.remove(recProdList[prodKey])
+    # print(finalProdList)
+    return finalProdList
+            
+    
+            
     
         
         
 if __name__ == '__main__':
     print(highestRated())
     print(hotDeals())
+    print(recommendProd([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]))

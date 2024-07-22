@@ -60,7 +60,7 @@ print(f'Jaccard Score: {jaccard:.4f}')
 # Hamming Loss: 0.0200
 # Jaccard Score: 0.9765
 
-test = np.array([19,1,1,1,1,1,1,1,0,0,1,0]).reshape(1,-1)
+test = np.array([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]).reshape(1,-1)
 print(test)
 
 modelOutput = surveyModel.predict(test)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 import Survey from './Survey';
 
@@ -10,7 +10,36 @@ function HomePage(props) {
         document.getElementById("homePage").style.display = "none";
         document.getElementById("survey_container").style.display = "block"
       }
+
+      console.log(`Survey products: ${props.survey}`)
+      console.log(props.survey.length)
       
+    //   function showSurvey(){
+    //     if (props.survey.length === 0){
+    //         document.getElementById("surv_container").style.display = "none"
+    //         document.getElementById("preSurv_container").style.display = "block"
+    //         console.log("Yes")
+    //     }
+    //     else{
+    //         document.getElementById("surv_container").style.display = "inline-flex"
+    //         document.getElementById("preSurv_container").style.display = "none"
+    //         console.log("Naw")
+    //     }
+    // }
+
+    useEffect(() => {
+        if (props.survey.length === 0){
+            document.getElementById("survey_title").style.display = "none"
+            document.getElementById("recommend_container2").style.display = "none"
+            document.getElementById("preSurv_container").style.display = "block"
+        }
+        else{
+            document.getElementById("survey_title").style.display = "block"
+            document.getElementById("recommend_container2").style.display = "inline-flex"
+            document.getElementById("preSurv_container").style.display = "none"
+        }
+    }, [props.survey]);
+
     return (
         <Fragment>
             <style>{'body { background-color: grey; }'}</style>
@@ -62,13 +91,37 @@ function HomePage(props) {
                 </header>
                 <div id="shopBody">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Click here to take a quick survey to recommend products most suited to your taste</h5>
-                                    <button type="submit" class="btn btn-primary" onClick={takeSurvey}>Start survey</button>
+                        <div id="preSurv_container">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Click here to take a quick survey to recommend products most suited to your taste</h5>
+                                        <button type="submit" class="btn btn-primary" onClick={takeSurvey}>Start survey</button>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <p class="fs-1" id='survey_title'>Based on your personal preferences</p>
+                        <div id="recommend_container2">
+                            {props.survey.map((item, index) => (
+                                <div key={index} className="card" style={{ width: '18rem' }}>
+                                <img src="..." className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{item[0]}</h5>
+                                </div>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">${item[1]}</li>
+                                    <li className="list-group-item">Rating: {item[2]} ⭐</li>
+                                </ul>
+                                <div className="card-body">
+                                    <a href="#" className="card-link">Card link</a>
+                                    <a href="#" className="card-link">Another link</a>
+                                </div>
+                                </div>
+                            ))}
                         </div>
                         <br />
                         <br />

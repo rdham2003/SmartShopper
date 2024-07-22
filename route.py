@@ -1,11 +1,16 @@
 from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 import os
-from backend.functions import highestRated, hotDeals
+from backend.functions import highestRated, hotDeals, recommendProd
 import pickle
+import numpy as np
+
+surveyModel = pickle.load(open("model.pkl", "rb"))
 
 app = Flask(__name__, static_folder='frontend/dist', static_url_path='/')
 CORS(app)
+
+survey_results = []
 
 @app.route('/')
 def serve():
@@ -17,7 +22,8 @@ def serve():
 def get_info():
     data = {
         "Deals": hotDeals(),
-        "Rated": highestRated()
+        "Rated": highestRated(),
+        "Survey": survey_results
     }
     return jsonify(data)
 
@@ -53,6 +59,12 @@ def recommend():
     survey.append(1) if music == 'on' else survey.append(0)
     print(survey)
     print(age,gender,traveling,reading,fitness,cooking,arts_crafts,movie_tvshow,gaming,outdoors,music)
+    survProds = recommendProd(survey)
+    print(survProds)
+    
+    global survey_results
+    survey_results = survProds
+    
     return send_from_directory(app.static_folder, 'index.html')
     
 
