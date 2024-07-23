@@ -38,3 +38,15 @@
 #recommend_container2 {
     display: inline-flex;
 }
+
+#aboutus_container{
+    display: none;
+}
+
+#brands_container{
+    display: none;
+}
+
+#customer_container{
+    display: none;
+}

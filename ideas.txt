@@ -15,3 +15,6 @@ Age: 18-25: Gaming, Music, Fashion, Fitness
      Gaming- Gaming
      Outdoors- Outdoors
      Music- Music
+
+Survey & Search recommendating: SkLearn Models
+Searchbar & Customer Support: Pytorch Neural Networks

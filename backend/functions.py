@@ -81,12 +81,11 @@ def recommendProd(survArr):
     # print(finalProdList)
     return finalProdList
             
-    
-            
-    
-        
+def productSearch(product):
+    return None  
         
 if __name__ == '__main__':
-    print(highestRated())
-    print(hotDeals())
-    print(recommendProd([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]))
+    # print(highestRated())
+    # print(hotDeals())
+    # print(recommendProd([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]))
+    print(productSearch("care"))

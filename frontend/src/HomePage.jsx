@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 import Survey from './Survey';
+import AboutUs from './AboutUs';
+import Brands from './Brands.jsx';
+import CustomerSupport from './CustomerSupport';
 
 function HomePage(props) {
 
@@ -9,6 +12,33 @@ function HomePage(props) {
     function takeSurvey(){
         document.getElementById("homePage").style.display = "none";
         document.getElementById("survey_container").style.display = "block"
+      }
+
+      function toHome(){
+        document.getElementById("homePage").style.display = "block"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+      }
+      function toAboutUs(){
+        document.getElementById("homePage").style.display = "none"
+        document.getElementById("aboutus_container").style.display = "block"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+      }
+
+      function toBrands(){
+        document.getElementById("homePage").style.display = "none"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "block"
+        document.getElementById("customer_container").style.display = "none"
+      }
+
+      function toCustomerSupport(){
+        document.getElementById("homePage").style.display = "none"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "block"
       }
 
       console.log(`Survey products: ${props.survey}`)
@@ -40,6 +70,7 @@ function HomePage(props) {
         }
     }, [props.survey]);
 
+    
     return (
         <Fragment>
             <style>{'body { background-color: grey; }'}</style>
@@ -47,23 +78,23 @@ function HomePage(props) {
                 <header id="headerHome" className="text-center">
                     <nav className="navbar navbar-expand-lg navbar-light bg-dark subtle mb-4">
                         <div className="container-fluid">
-                            <a className="navbar-brand text-light" href="#">SmartShopper</a>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <a className="navbar-brand text-light">SmartShopper</a>
+                            <button onClick={toHome} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
                                 <li className="nav-item">
-                                    <a className="nav-link active text-light" aria-current="page" href="#">Home</a>
+                                    <button className="nav-link active text-light" aria-current="page" onClick={toHome}>Home</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-item-link" href="#">About Us</a>
+                                    <button className="nav-link nav-item-link" onClick={toAboutUs}>About Us</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-item-link" href="#">Hot Deals</a>
+                                    <button className="nav-link nav-item-link" onClick={toBrands}>Brands</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-item-link" href="#">Chatbot Customer Support</a>
+                                    <button className="nav-link nav-item-link" onClick={toCustomerSupport}>Chatbot Customer Support</button>
                                 </li>
                             </ul>
                                 <form className="d-flex">
@@ -104,7 +135,7 @@ function HomePage(props) {
                         <br />
                         <br />
                         <br />
-                        <p class="fs-1" id='survey_title'>Based on your personal preferences</p>
+                        <p class="fs-1" id='survey_title'>Based on your personal preferences 🧑</p>
                         <div id="recommend_container2">
                             {props.survey.map((item, index) => (
                                 <div key={index} className="card" style={{ width: '18rem' }}>
@@ -171,6 +202,9 @@ function HomePage(props) {
                 </div>
             </div>
             <Survey />
+            <AboutUs />
+            <Brands />
+            <CustomerSupport />
         </Fragment>
     );
 }
