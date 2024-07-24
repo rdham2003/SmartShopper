@@ -9,7 +9,7 @@ def tokenize(word):
     return nltk.word_tokenize(word)
 
 def stemming(word):
-    return stemmer.stem(str.lower())
+    return stemmer.stem(str.lower(word))
 
 def bag_of_words(tok_str, words):
     idx = 0
@@ -20,3 +20,12 @@ def bag_of_words(tok_str, words):
             bag[idx] = 1
         idx += 1 
     return bag
+
+string = "Hello, How are you today?"
+
+tok_str = tokenize(string)
+
+bag = bag_of_words(tok_str, string)
+
+print(tok_str)
+print(bag)

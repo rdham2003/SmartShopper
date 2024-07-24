@@ -50,3 +50,11 @@
 #customer_container{
     display: none;
 }
+
+#login_container{
+    display: none;
+}
+
+#signup_container{
+    display: none
+}

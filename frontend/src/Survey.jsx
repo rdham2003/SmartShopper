@@ -14,9 +14,6 @@ function Survey() {
         <form action="/survey" method="POST">
             <div id="survey_container">
                 <div className="card text-center">
-                    <div className="card-header">
-                        Featured
-                    </div>
                     <div className="card-body">
                         <h1>Personal Survey</h1>
                         <br /><br /><br />
@@ -39,7 +36,7 @@ function Survey() {
                             <label className="form-control" htmlFor="female">Female</label>
                         </div>
                         <br />
-                        <h4>What types of activities do you enjoy in your free time? (Select up to 3)</h4>
+                        <h4>What types of activities do you enjoy in your free time?</h4>
                         {survey.map((survey) =>
                             <div className="input-group mb-3">
                                 <div className="input-group-text">
@@ -52,7 +49,7 @@ function Survey() {
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     <div className="card-footer text-muted">
-                        2 days ago
+                        © 2024 SmartShopper
                     </div>
                 </div>
             </div>

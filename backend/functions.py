@@ -1,6 +1,8 @@
 import random
 import pickle
 import numpy as np
+import sqlite3
+import pandas as pd
 
 surveyModel = pickle.load(open("model.pkl", "rb"))
 
@@ -83,9 +85,25 @@ def recommendProd(survArr):
             
 def productSearch(product):
     return None  
+
+def createUserDB():
+    userDB = sqlite3.connect("database/userDB.db")
+    userCur = userDB.cursor()
+    
+    with(open('database/createUserDB.sql', 'r')) as query:
+        sql_query = query.read()
         
+        userCur.execute(sql_query)
+        
+    userDB.commit()
+
+    df = pd.read_sql_query('SELECT * FROM user_database', userDB)
+    userDB.close()
+    
+    print(df.head())
 if __name__ == '__main__':
     # print(highestRated())
     # print(hotDeals())
     # print(recommendProd([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]))
-    print(productSearch("care"))
+    # print(productSearch("care"))
+    createUserDB()
