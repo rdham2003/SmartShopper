@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Fragment } from 'react';
+import React from 'react'
+import { Fragment  } from 'react'
 
-function Brands(){
+function Search(props){
 
     function toHome(){
         document.getElementById("homePage").style.display = "block"
         document.getElementById("aboutus_container").style.display = "none"
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "none"
       }
       function toAboutUs(){
         document.getElementById("homePage").style.display = "none"
         document.getElementById("aboutus_container").style.display = "block"
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "none"
       }
 
       function toBrands(){
@@ -21,6 +23,7 @@ function Brands(){
         document.getElementById("aboutus_container").style.display = "none"
         document.getElementById("brands_container").style.display = "block"
         document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "none"
       }
 
       function toCustomerSupport(){
@@ -28,6 +31,7 @@ function Brands(){
         document.getElementById("aboutus_container").style.display = "none"
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "block"
+        document.getElementById("search_container").style.display = "none"
       }
 
       function toLogin(){
@@ -36,11 +40,20 @@ function Brands(){
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "none"
         document.getElementById("login_container").style.display = "block"
+        document.getElementById("search_container").style.display = "none"
       }
 
-    return (
+      function toSearch(){
+        document.getElementById("homePage").style.display = "block"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "block"
+      }
+
+      return (
         <Fragment>
-            <div id="brands_container">
+            <div id="search_container">
                 <style>{'body { background-color: grey; }'}</style>
                 <header id="headerHome" className="text-center">
                     <nav className="navbar navbar-expand-lg navbar-light bg-dark subtle mb-4">
@@ -87,14 +100,14 @@ function Brands(){
                         </div>
                     </nav>
                 </header>
-                <div id="brands_body">
+                <div id="search_body">
                     <div class="card">
                         <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eum similique ipsa reprehenderit voluptas voluptate sint harum. Necessitatibus tempora tempore neque omnis similique, quos nihil soluta aliquam, voluptas quod ipsum?</h1>
                     </div>
                 </div>
             </div>
         </Fragment>
-    )
+     )
 }
 
-export default Brands
+export default Search

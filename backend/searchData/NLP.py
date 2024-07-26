@@ -27,5 +27,5 @@ tok_str = tokenize(string)
 
 bag = bag_of_words(tok_str, string)
 
-print(tok_str)
-print(bag)
+# print(tok_str)
+# print(bag)

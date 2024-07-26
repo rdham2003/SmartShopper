@@ -1,0 +1,57 @@
+{
+    "intents": [
+        {
+            "tag": "Gaming",
+            "patterns": ["Gaming", "Mouse", "Computing", "LED Display", "Smartwatch", "Headset", "Digital", "WiFi", "USB", "Camera", "Thermometer", "Bluetooth", "WiFi Extender", "Tablets", "Smartphones", "Devices", "HD Video", "VR", "PC Gaming", "Virtual Reality", "In-Ear", "Over-Ear", "Gaming", "Console", "Laptop", "Router", "RGB", "Video", "Immersive", "Gaming Experience", "Gaming Community"],
+            "responses": "Searching for Gaming..."
+        },
+
+        {
+            "tag": "TV",
+            "patterns": ["TV", "Home Theater", "Projector", "Touchscreen"],
+            "responses": "Searching for TV..."
+        },
+
+        {
+            "tag": "Music",
+            "patterns": ["Music", "Audio", "Speaker", "Earbuds", "Headphones", "Portable", "Over-Ear", "In-Ear", "Wireless", "Music", "Bluetooth", "Noise Cancelling"],
+            "responses": "Searching for Music"
+        },
+
+        {
+            "tag": "Home",
+            "patterns": ["Air Purifier", "Home Theater", "Appliances", "Ceiling Fan", "Vacuum", "Smoke Detector", "Bedroom", "Doorbell", "Garage Door Opener", "Door Lock", "Keyless", "Photo Frame", "Blanket", "Heating", "Cooling", "Thermostat", "Portable", "Compact", "Cleaning", "Storage", "Furniture", "Smart Home", "Home Gym", "Mattress", "Dimmable", "Rugged", "Tools", "Secure", "Shelter", "Home", "Comfort"],
+            "responses": "Searching for Home"
+        },
+
+        {
+            "tag": "Fitness",
+            "patterns": ["Fitness", "Hydration", "Weightlifting", "Exercise", "Running", "Workout", "Walking", "Cardio", "Biking", "Cycling", "Yoga", "Stretching", "Weights", "Fitness", "Athletics", "Sports", "Activewear", "Strength", "Performance", "Agility", "Mobility", "Training", "Fitness Tracker", "Endurance", "Body Composition", "Heart Rate", "Hydration Tracker", "Jump Rope", "Muscle", "Gym"],
+            "responses": "Searching for Fitness"
+        },
+
+        {
+            "tag": "Fashion",
+            "patterns": ["Fashion", "Clothing", "Footwear", "Accessories", "Eyewear", "Fashion", "Beachwear", "Leggings", "Shoes", "Boots", "Shaver", "Hair Dryer", "Hair Straightener", "Grooming", "Grooming Tools", "Stylish", "Trendy", "Casual", "Professional", "Lifestyle", "Outerwear", "Gloves", "Beachwear", "Leggings"],
+            "responses": "Searching for Fashion"
+        },
+
+        {
+            "tag": "Outdoors",
+            "patterns": ["Outdoors", "Trekking", "Backpacking", "Climbing", "Hiking", "Camping", "Snowboarding", "Hammocking", "Rock Climbing", "Mountaineering", "Winter", "Outdoor", "Beach", "Adventure", "Survival", "Gear", "Lantern", "Helmet", "Rainwear", "Insulation", "Camping Gear", "Backpack", "Towel", "UV Protection"],
+            "responses": "Searching for Outdoors"
+        },
+
+        {
+            "tag": "Personal Care",
+            "patterns": ["Personal Care", "Oral Care", "Shaving", "Brushing", "Dental Care", "Personal Care", "Grooming", "Grooming Tools", "Hygiene", "Health", "Clean Air", "Sleep", "Relaxation", "Massage", "Comfortable"],
+            "responses": "Searching for Personal Care"
+        },
+
+        {
+            "tag": "Utilities",
+            "patterns": ["Utilities", "Large", "Equipment", "Stability", "Capture", "Images", "Drinks", "Cafe", "Healthy Eating", "Study", "Leak Proof", "Bag", "Backpack", "Soft", "Warmth", "Comfortable", "Waterproof", "Lightweight", "Durable", "Insulated", "Stainless Steel", "Green", "Blue", "Gray", "White", "Black", "Ergonomic", "Adjustable", "Leak Proof", "Easy to Clean", "Portable", "Handheld", "Fast Charging", "Rechargeable", "Battery Operated", "Multi-Use", "Utility", "Convenience", "Secure", "Non-Slip", "Fast Boil", "Energy Efficient", "Solar Power", "HEPA Filter", "Electric", "High Speed", "WiFi Plug", "Smart", "Smart Home", "Smartwatch", "Noise Cancelling"],
+            "responses": "Searching for Utilities"
+        }
+    ]
+}

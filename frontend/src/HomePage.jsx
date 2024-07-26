@@ -15,6 +15,14 @@ function HomePage(props) {
         document.getElementById("homePage").style.display = "none";
         document.getElementById("survey_container").style.display = "block"
       }
+      
+      function toSearch(){
+        document.getElementById("homePage").style.display = "block"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "block"
+      }
 
       function toHome(){
         document.getElementById("homePage").style.display = "block"
@@ -107,13 +115,13 @@ function HomePage(props) {
                                     <button className="nav-link nav-item-link" onClick={toCustomerSupport}>Chatbot Customer Support</button>
                                 </li>
                             </ul>
-                                <form className="d-flex">
-                                    <button className="btn btn-outline-secondary bg-info" type="button" id="button-addon1">
+                                <form className="d-flex" action="/search" method="POST">
+                                    <button className="btn btn-outline-secondary bg-info" type="submit" id="button-addon1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16"> 
                                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                                         </svg>
                                     </button>
-                                    <input className="form-control me-2" type="search" placeholder="What are you looking for today..." aria-label="Search" style={{ minWidth: '800px' }} />
+                                    <input className="form-control me-2" type="search" name="searchbar" placeholder="What are you looking for today..." aria-label="Search" style={{ minWidth: '800px' }} />
                                 </form>
                                 <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                     <ul className="navbar-nav ms-auto">

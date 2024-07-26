@@ -6,7 +6,7 @@ import {createBrowserRouter,RouterProvider, Route, Link} from "react-router-dom"
 import Survey from './Survey';
 
 function App() {
-  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [] });
+  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": []});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Fragment>
-      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey}/>
+      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search={data.Search}/>
     </Fragment>
   );
 }

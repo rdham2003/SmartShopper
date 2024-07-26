@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 import os
-from backend.functions import highestRated, hotDeals, recommendProd
+from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response
 import pickle
 import numpy as np
 
@@ -11,6 +11,7 @@ app = Flask(__name__, static_folder='frontend/dist', static_url_path='/')
 CORS(app)
 
 survey_results = []
+search_results = []
 
 @app.route('/')
 def serve():
@@ -23,7 +24,8 @@ def get_info():
     data = {
         "Deals": hotDeals(),
         "Rated": highestRated(),
-        "Survey": survey_results
+        "Survey": survey_results,
+        "Search": search_results
     }
     return jsonify(data)
 
@@ -67,6 +69,12 @@ def recommend():
     
     return send_from_directory(app.static_folder, 'index.html')
     
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    product = request.form.get("searchbar")
+    search_prods = productSearch(product)
+    print(search_prods)
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

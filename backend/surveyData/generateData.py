@@ -79,15 +79,15 @@ utilList = []
 # print(survey)
 
 for i in range(samples):
-    gamingList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["Gender_male"][i] == 1) or (survey["GamingFeat"][i] == 1) else gamingList.append(0)
+    gamingList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["GamingFeat"][i] == 1) else gamingList.append(0)
     musicList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["MusicFeat"][i] == 1) else musicList.append(0)   
     fashionList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["Arts & Crafts"][i] == 1) else fashionList.append(0) 
-    fitnessList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["Gender_male"][i] == 1) or (survey["FitnessFeat"][i] == 1) else fitnessList.append(0)
-    personalCareList.append(1) if (survey["Age"][i] >= 26 and survey["Age"][i] < 41) or (survey["Gender_female"][i] == 1) or (survey["Reading"][i] == 1) else personalCareList.append(0)
+    fitnessList.append(1) if (survey["Age"][i] >= 18 and survey["Age"][i] < 26) or (survey["FitnessFeat"][i] == 1) else fitnessList.append(0)
+    personalCareList.append(1) if (survey["Age"][i] >= 26 and survey["Age"][i] < 41) or (survey["Reading"][i] == 1) else personalCareList.append(0)
     utilList.append(1) if (survey["Age"][i] >= 26 and survey["Age"][i] < 41) or (survey["Age"][i] >= 56 and survey["Age"][i] < 66) or (survey["Arts & Crafts"][i] == 1) else utilList.append(0)
-    kitchenList.append(1) if (survey["Age"][i] >= 26 and survey["Age"][i] < 41) or (survey["Gender_female"][i] == 1) or (survey["Cooking"][i] == 1) else kitchenList.append(0)
-    homeList.append(1) if (survey["Age"][i] >= 41 and survey["Age"][i] < 56) or (survey["Age"][i] >= 56 and survey["Age"][i] < 66) or (survey["Gender_female"][i] == 1) else homeList.append(0)
-    outdoorsList.append(1) if (survey["Age"][i] >= 41 and survey["Age"][i] < 56) or (survey["Traveling"][i] == 1) or (survey["OutdoorsFeat"][i] == 1)else outdoorsList.append(0)
+    kitchenList.append(1) if (survey["Age"][i] >= 26 and survey["Age"][i] < 41) or (survey["Cooking"][i] == 1) else kitchenList.append(0)
+    homeList.append(1) if (survey["Age"][i] >= 41 and survey["Age"][i] < 56) or (survey["Age"][i] >= 56 and survey["Age"][i] < 66) else homeList.append(0)
+    outdoorsList.append(1) if (survey["Age"][i] >= 41 and survey["Age"][i] < 56) or (survey["Traveling"][i] == 1) or (survey["OutdoorsFeat"][i] == 1) else outdoorsList.append(0)
     tvList.append(1) if (survey["Age"][i] >= 41 and survey["Age"][i] < 56) or (survey["Movies & Shows"][i] == 1) else tvList.append(0)
 
 survey["GamingVar"] = gamingList
