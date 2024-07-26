@@ -6,6 +6,7 @@ import Brands from './Brands.jsx';
 import CustomerSupport from './CustomerSupport';
 import LogIn from './LogIn'
 import SignUp from './SignUp'
+import Search from './Search'
 
 function HomePage(props) {
 
@@ -17,7 +18,7 @@ function HomePage(props) {
       }
       
       function toSearch(){
-        document.getElementById("homePage").style.display = "block"
+        document.getElementById("homePage").style.display = "none"
         document.getElementById("aboutus_container").style.display = "none"
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "none"
@@ -87,6 +88,26 @@ function HomePage(props) {
             document.getElementById("preSurv_container").style.display = "none"
         }
     }, [props.survey]);
+
+    console.log(`Search: ${props.searchOn}`)
+    // console.log(document.getElementById("search_container").style.display)
+
+    useEffect(() => {
+        if (props.searchOn){
+            document.getElementById("homePage").style.display = "none"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "block"
+        }
+        else{
+            document.getElementById("homePage").style.display = "block"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+        }
+    }, [props.searchOn])
 
     
     return (
@@ -225,6 +246,7 @@ function HomePage(props) {
             <CustomerSupport />
             <LogIn />
             <SignUp />
+            <Search search={props.search}/>
         </Fragment>
     );
 }

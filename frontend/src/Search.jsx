@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Fragment  } from 'react'
 
 function Search(props){
@@ -44,12 +44,21 @@ function Search(props){
       }
 
       function toSearch(){
-        document.getElementById("homePage").style.display = "block"
+        document.getElementById("homePage").style.display = "none"
         document.getElementById("aboutus_container").style.display = "none"
         document.getElementById("brands_container").style.display = "none"
         document.getElementById("customer_container").style.display = "none"
         document.getElementById("search_container").style.display = "block"
       }
+
+      useEffect(() => {
+        if (props.search.length === 0){
+            document.getElementById("itemsearch_container").style.display = "none"
+        }
+        else{
+            document.getElementById("itemsearch_container").style.display = "block"
+        }
+      })
 
       return (
         <Fragment>
@@ -100,9 +109,23 @@ function Search(props){
                         </div>
                     </nav>
                 </header>
-                <div id="search_body">
-                    <div class="card">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eum similique ipsa reprehenderit voluptas voluptate sint harum. Necessitatibus tempora tempore neque omnis similique, quos nihil soluta aliquam, voluptas quod ipsum?</h1>
+            <div className="card">
+                <div id="itemsearch_container">
+                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                        {props.search.map((item, index) => (
+                            <div key={index} className="col">
+                                <div className="card h-100" style={{ width: '18rem' }}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{item[0]}</h5>
+                                        <p className="card-text">{item[2]} ⭐</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        <small className="text-body-secondary">${item[1]}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
                     </div>
                 </div>
             </div>

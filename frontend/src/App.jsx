@@ -4,9 +4,10 @@ import axios from 'axios';
 import HomePage from './HomePage';
 import {createBrowserRouter,RouterProvider, Route, Link} from "react-router-dom";
 import Survey from './Survey';
+import Search from './Search';
 
 function App() {
-  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": []});
+  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": [], "searchOn": false});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,10 +26,10 @@ function App() {
   // console.log(data.Deals)
   // console.log(data.Rated)
   // console.log(data.Survey)
-
+  
   return (
     <Fragment>
-      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search={data.Search}/>
+      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search = {data.Search} searchOn = {data.searchOn}/>
     </Fragment>
   );
 }

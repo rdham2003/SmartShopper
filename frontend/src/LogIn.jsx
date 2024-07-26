@@ -18,7 +18,7 @@ function LogIn() {
                     <form>
                         <div className="mb-3">
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" name="age"/>
+                            <input required type="text" className="form-control" id="floatingInput" placeholder="name@example.com" name="age"/>
                             <label htmlFor="floatingInput">Email</label>
                         </div>
                             <div id="emailHelp" className="form-text">
@@ -26,7 +26,7 @@ function LogIn() {
                             </div>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="password" className="form-control" id="floatingInput" placeholder="name@example.com" name="age"/>
+                            <input required type="password" className="form-control" id="floatingInput" placeholder="name@example.com" name="age"/>
                             <label htmlFor="floatingInput">Password</label>
                         </div>
                         <div id="emailHelp" className="form-text">

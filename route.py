@@ -12,11 +12,16 @@ CORS(app)
 
 survey_results = []
 search_results = []
+searchOn = False
 
 @app.route('/')
 def serve():
     full_path = os.path.join(app.static_folder, 'index.html')
     print(full_path)
+    
+    global searchOn
+    searchOn = False
+    
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api/data')
@@ -25,7 +30,8 @@ def get_info():
         "Deals": hotDeals(),
         "Rated": highestRated(),
         "Survey": survey_results,
-        "Search": search_results
+        "Search": search_results,
+        "searchOn": searchOn
     }
     return jsonify(data)
 
@@ -67,6 +73,9 @@ def recommend():
     global survey_results
     survey_results = survProds
     
+    global searchOn
+    searchOn = False
+    
     return send_from_directory(app.static_folder, 'index.html')
     
 @app.route("/search", methods=["GET", "POST"])
@@ -74,6 +83,13 @@ def search():
     product = request.form.get("searchbar")
     search_prods = productSearch(product)
     print(search_prods)
+    
+    global search_results
+    search_results = search_prods
+    
+    global searchOn
+    searchOn = True
+    
     return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":

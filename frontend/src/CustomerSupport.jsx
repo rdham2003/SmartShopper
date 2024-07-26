@@ -38,6 +38,14 @@ function CustomerSupport(){
         document.getElementById("login_container").style.display = "block"
       }
 
+      function toSearch(){
+        document.getElementById("homePage").style.display = "none"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+        document.getElementById("search_container").style.display = "block"
+      }
+
     return (
         <Fragment>
             <div id="customer_container">
@@ -52,7 +60,7 @@ function CustomerSupport(){
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
                                 <li className="nav-item">
-                                    <button className="nav-link active text-light" aria-current="page" onClick={toHome}>Home</button>
+                                    <button className="nav-link nav-item-link" aria-current="page" onClick={toHome}>Home</button>
                                 </li>
                                 <li className="nav-item">
                                     <button className="nav-link nav-item-link" onClick={toAboutUs}>About Us</button>
@@ -61,7 +69,7 @@ function CustomerSupport(){
                                     <button className="nav-link nav-item-link" onClick={toBrands}>Brands</button>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link nav-item-link" onClick={toCustomerSupport}>Chatbot Customer Support</button>
+                                    <button className="nav-link active text-light" onClick={toCustomerSupport}>Chatbot Customer Support</button>
                                 </li>
                             </ul>
                                 <form className="d-flex" action="/search" method="POST">

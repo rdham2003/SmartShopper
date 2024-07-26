@@ -56,5 +56,9 @@
 }
 
 #signup_container{
-    display: none
+    display: none;
+}
+
+#search_container{
+    display: none;
 }
