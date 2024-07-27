@@ -15,7 +15,7 @@ function LogIn() {
                     <br />
                     <br />
                     <br />     
-                    <form>
+                    <form action='/login' method='POST'>
                         <div className="mb-3">
                         <div className="form-floating mb-3">
                             <input required type="text" className="form-control" id="floatingInput" placeholder="name@example.com" name="age"/>

@@ -62,3 +62,8 @@
 #search_container{
     display: none;
 }
+
+#two_container{
+    width: 200px;
+    margin: auto;
+}

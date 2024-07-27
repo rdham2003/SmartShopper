@@ -92,5 +92,15 @@ def search():
     
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    return send_from_directory(app.static_folder, 'test.html')
+
+@app.route("/twofactor", methods=["GET", "POST"])
+def twofactor():
+    return send_from_directory(app.static_folder, 'index.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
+    
+
