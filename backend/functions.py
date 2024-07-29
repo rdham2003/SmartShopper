@@ -7,6 +7,7 @@ import torch
 import json
 from backend.searchData.NN import NeuralNetwork
 from backend.searchData.NLP import tokenize, stemming, bag_of_words
+import smtplib
 
 
 surveyModel = pickle.load(open("model.pkl", "rb"))
@@ -131,6 +132,7 @@ def get_response(product, prods, prod_tags):
                 search_tags = intent["patterns"]
                 for i in range(len(prods)):
                     for j in range(len(prod_tags[i])):
+                        # print(prod_tags[i])
                         if prod_tags[i][j] in search_tags:
                             prod_search.append(prods[i])
                             break
@@ -184,6 +186,21 @@ def createUserDB():
     userDB.close()
     
     print(df.head())
+
+def send_email(subject, body, receiver_email):
+    sender_email = "twofactfactor@gmail.com"
+    password = "gvhr hoxe ugcn gxcj"
+
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+
+    message = f"Subject: {subject}\n\n{body}"
+
+    server.login(sender_email, password)
+
+    server.sendmail(sender_email, receiver_email, message)
+    print("Email Sent")
+    
 if __name__ == '__main__':
     # print(highestRated())
     # print(hotDeals())

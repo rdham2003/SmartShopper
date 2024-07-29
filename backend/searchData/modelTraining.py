@@ -60,11 +60,11 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 #Hyperparameters
-batch_size = 8
-hidden_size = 40
+batch_size = 16
+hidden_size = 150
 input_size = len(all_words)
 output_size = len(tags)
-learning_rate = 0.001
+learning_rate = 0.0005
 num_epochs = 1000
 device = torch.device("cpu")
 

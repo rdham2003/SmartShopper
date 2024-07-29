@@ -4,6 +4,7 @@ import os
 from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response
 import pickle
 import numpy as np
+import sqlite3
 
 surveyModel = pickle.load(open("model.pkl", "rb"))
 
@@ -94,10 +95,44 @@ def search():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    return send_from_directory(app.static_folder, 'test.html')
+    username = request.form.get("username")
+    email = request.form.get("email")
+    phoneNo = request.form.get("phoneNumber")
+    password = request.form.get("password")
+    twofactor = request.form.get("twofactor")
+    print(username, email, phoneNo, password, twofactor)
+    
+    userDB = sqlite3.connect("database/userDB.db")
+    userCur = userDB.cursor()
+    
+    userCur.execute("SELECT * FROM user_database")
+    users = userCur.fetchall()
+    userDB.commit()
+    
+    print(users)
+    
+    for user in users:
+        if (username in user) or (email in user):
+            print("Username or email already in use")
+    
+    if(twofactor == "on"):
+        return send_from_directory(app.static_folder, 'test.html')
+    else:
+        query = "INSERT INTO user_database (username, email, phoneNumber, password, twofactor) VALUES (?,?,?,?,?)"
+        data = (username, email, phoneNo, password, twofactor)
+        
+        userCur.execute(query, data)
+        userDB.commit()
+        userDB.close()
+        
+        return send_from_directory(app.static_folder, "index.html")
 
 @app.route("/twofactor", methods=["GET", "POST"])
 def twofactor():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
     return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":

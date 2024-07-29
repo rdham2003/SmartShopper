@@ -1,57 +1,337 @@
 {
     "intents": [
-        {
-            "tag": "Gaming",
-            "patterns": ["Gaming", "Mouse", "Computing", "LED Display", "Smartwatch", "Headset", "Digital", "WiFi", "USB", "Camera", "Thermometer", "Bluetooth", "WiFi Extender", "Tablets", "Smartphones", "Devices", "HD Video", "VR", "PC Gaming", "Virtual Reality", "In-Ear", "Over-Ear", "Gaming", "Console", "Laptop", "Router", "RGB", "Video", "Immersive", "Gaming Experience", "Gaming Community"],
-            "responses": "Searching for Gaming..."
-        },
-
-        {
-            "tag": "TV",
-            "patterns": ["TV", "Home Theater", "Projector", "Touchscreen"],
-            "responses": "Searching for TV..."
-        },
-
-        {
-            "tag": "Music",
-            "patterns": ["Music", "Audio", "Speaker", "Earbuds", "Headphones", "Portable", "Over-Ear", "In-Ear", "Wireless", "Music", "Bluetooth", "Noise Cancelling"],
-            "responses": "Searching for Music"
-        },
-
-        {
-            "tag": "Home",
-            "patterns": ["Air Purifier", "Home Theater", "Appliances", "Ceiling Fan", "Vacuum", "Smoke Detector", "Bedroom", "Doorbell", "Garage Door Opener", "Door Lock", "Keyless", "Photo Frame", "Blanket", "Heating", "Cooling", "Thermostat", "Portable", "Compact", "Cleaning", "Storage", "Furniture", "Smart Home", "Home Gym", "Mattress", "Dimmable", "Rugged", "Tools", "Secure", "Shelter", "Home", "Comfort"],
-            "responses": "Searching for Home"
-        },
-
-        {
-            "tag": "Fitness",
-            "patterns": ["Fitness", "Hydration", "Weightlifting", "Exercise", "Running", "Workout", "Walking", "Cardio", "Biking", "Cycling", "Yoga", "Stretching", "Weights", "Fitness", "Athletics", "Sports", "Activewear", "Strength", "Performance", "Agility", "Mobility", "Training", "Fitness Tracker", "Endurance", "Body Composition", "Heart Rate", "Hydration Tracker", "Jump Rope", "Muscle", "Gym"],
-            "responses": "Searching for Fitness"
-        },
-
-        {
-            "tag": "Fashion",
-            "patterns": ["Fashion", "Clothing", "Footwear", "Accessories", "Eyewear", "Fashion", "Beachwear", "Leggings", "Shoes", "Boots", "Shaver", "Hair Dryer", "Hair Straightener", "Grooming", "Grooming Tools", "Stylish", "Trendy", "Casual", "Professional", "Lifestyle", "Outerwear", "Gloves", "Beachwear", "Leggings"],
-            "responses": "Searching for Fashion"
-        },
-
-        {
-            "tag": "Outdoors",
-            "patterns": ["Outdoors", "Trekking", "Backpacking", "Climbing", "Hiking", "Camping", "Snowboarding", "Hammocking", "Rock Climbing", "Mountaineering", "Winter", "Outdoor", "Beach", "Adventure", "Survival", "Gear", "Lantern", "Helmet", "Rainwear", "Insulation", "Camping Gear", "Backpack", "Towel", "UV Protection"],
-            "responses": "Searching for Outdoors"
-        },
-
-        {
-            "tag": "Personal Care",
-            "patterns": ["Personal Care", "Oral Care", "Shaving", "Brushing", "Dental Care", "Personal Care", "Grooming", "Grooming Tools", "Hygiene", "Health", "Clean Air", "Sleep", "Relaxation", "Massage", "Comfortable"],
-            "responses": "Searching for Personal Care"
-        },
-
-        {
-            "tag": "Utilities",
-            "patterns": ["Utilities", "Large", "Equipment", "Stability", "Capture", "Images", "Drinks", "Cafe", "Healthy Eating", "Study", "Leak Proof", "Bag", "Backpack", "Soft", "Warmth", "Comfortable", "Waterproof", "Lightweight", "Durable", "Insulated", "Stainless Steel", "Green", "Blue", "Gray", "White", "Black", "Ergonomic", "Adjustable", "Leak Proof", "Easy to Clean", "Portable", "Handheld", "Fast Charging", "Rechargeable", "Battery Operated", "Multi-Use", "Utility", "Convenience", "Secure", "Non-Slip", "Fast Boil", "Energy Efficient", "Solar Power", "HEPA Filter", "Electric", "High Speed", "WiFi Plug", "Smart", "Smart Home", "Smartwatch", "Noise Cancelling"],
-            "responses": "Searching for Utilities"
-        }
+      {
+        "tag": "Mouse",
+        "patterns": ["Mouse", "Computing", "PC Gaming"]
+      },
+      {
+        "tag": "LED Display",
+        "patterns": ["LED Display", "Touchscreen", "HD Video", "Video"]
+      },
+      {
+        "tag": "Smartwatch",
+        "patterns": ["Smartwatch", "Fitness Tracker", "Hydration Tracker"]
+      },
+      {
+        "tag": "Headset",
+        "patterns": ["Headset", "In-Ear", "Over-Ear", "Earbuds", "Headphones", "Wireless", "Bluetooth", "Noise Cancelling"]
+      },
+      {
+        "tag": "Digital",
+        "patterns": ["Digital", "Computing"]
+      },
+      {
+        "tag": "WiFi",
+        "patterns": ["WiFi", "WiFi Extender", "Router", "WiFi Plug"]
+      },
+      {
+        "tag": "USB",
+        "patterns": ["USB"]
+      },
+      {
+        "tag": "Camera",
+        "patterns": ["Camera", "VR", "Virtual Reality", "Capture", "Images"]
+      },
+      {
+        "tag": "Thermometer",
+        "patterns": ["Thermometer"]
+      },
+      {
+        "tag": "Bluetooth",
+        "patterns": ["Bluetooth", "Wireless"]
+      },
+      {
+        "tag": "Tablets",
+        "patterns": ["Tablets"]
+      },
+      {
+        "tag": "Smartphones",
+        "patterns": ["Smartphones"]
+      },
+      {
+        "tag": "Devices",
+        "patterns": ["Devices", "Digital"]
+      },
+      {
+        "tag": "Gaming",
+        "patterns": ["Gaming", "PC Gaming", "Console", "Gaming Community", "Gaming Experience"]
+      },
+      {
+        "tag": "Laptop",
+        "patterns": ["Laptop", "Computing"]
+      },
+      {
+        "tag": "RGB",
+        "patterns": ["RGB"]
+      },
+      {
+        "tag": "Immersive",
+        "patterns": ["Immersive", "VR", "Virtual Reality", "Gaming Experience"]
+      },
+      {
+        "tag": "Home Theater",
+        "patterns": ["Home Theater", "Projector"]
+      },
+      {
+        "tag": "Audio",
+        "patterns": ["Audio", "Speaker", "Earbuds", "Headphones", "Portable", "In-Ear", "Over-Ear", "Wireless", "Music", "Bluetooth", "Noise Cancelling"]
+      },
+      {
+        "tag": "Speaker",
+        "patterns": ["Speaker", "Audio"]
+      },
+      {
+        "tag": "Air Purifier",
+        "patterns": ["Air Purifier", "Clean Air"]
+      },
+      {
+        "tag": "Appliances",
+        "patterns": ["Appliances", "Vacuum", "Kettle", "Espresso", "Coffee Maker", "Blender", "Hand Mixer", "Instant Pot", "Multi-Cooker", "Pressure Cooker", "Crockpot", "Coffee Grinder", "Food Preparation", "Purification", "Kitchen"]
+      },
+      {
+        "tag": "Ceiling Fan",
+        "patterns": ["Ceiling Fan"]
+      },
+      {
+        "tag": "Smoke Detector",
+        "patterns": ["Smoke Detector"]
+      },
+      {
+        "tag": "Bedroom",
+        "patterns": ["Bedroom", "Blanket", "Mattress"]
+      },
+      {
+        "tag": "Doorbell",
+        "patterns": ["Doorbell", "Door Lock", "Keyless"]
+      },
+      {
+        "tag": "Garage Door Opener",
+        "patterns": ["Garage Door Opener"]
+      },
+      {
+        "tag": "Photo Frame",
+        "patterns": ["Photo Frame"]
+      },
+      {
+        "tag": "Heating",
+        "patterns": ["Heating", "Thermostat"]
+      },
+      {
+        "tag": "Cooling",
+        "patterns": ["Cooling", "Thermostat"]
+      },
+      {
+        "tag": "Portable",
+        "patterns": ["Portable", "Compact", "Handheld"]
+      },
+      {
+        "tag": "Storage",
+        "patterns": ["Storage"]
+      },
+      {
+        "tag": "Furniture",
+        "patterns": ["Furniture"]
+      },
+      {
+        "tag": "Smart Home",
+        "patterns": ["Smart Home", "WiFi Plug", "Smart"]
+      },
+      {
+        "tag": "Home Gym",
+        "patterns": ["Home Gym"]
+      },
+      {
+        "tag": "Dimmable",
+        "patterns": ["Dimmable"]
+      },
+      {
+        "tag": "Rugged",
+        "patterns": ["Rugged"]
+      },
+      {
+        "tag": "Tools",
+        "patterns": ["Tools"]
+      },
+      {
+        "tag": "Secure",
+        "patterns": ["Secure"]
+      },
+      {
+        "tag": "Shelter",
+        "patterns": ["Shelter"]
+      },
+      {
+        "tag": "Comfort",
+        "patterns": ["Comfort", "Comfortable", "Warmth"]
+      },
+      {
+        "tag": "Cooking",
+        "patterns": ["Cooking", "Grilling", "Baking", "Cookware", "Pots and Pans", "Food Preparation", "Drinkware", "Utensils", "Non-Stick", "Slow-Cooking", "Kitchen"]
+      },
+      {
+        "tag": "Recipes",
+        "patterns": ["Recipes", "Meals"]
+      },
+      {
+        "tag": "Hydration",
+        "patterns": ["Hydration", "Hydration Tracker", "Bottle"]
+      },
+      {
+        "tag": "Weightlifting",
+        "patterns": ["Weightlifting", "Exercise", "Workout", "Running", "Walking", "Cardio", "Biking", "Cycling", "Yoga", "Stretching", "Weights", "Fitness", "Athletics", "Sports", "Activewear", "Strength", "Performance", "Agility", "Mobility", "Training", "Endurance", "Body Composition", "Heart Rate"]
+      },
+      {
+        "tag": "Jump Rope",
+        "patterns": ["Jump Rope"]
+      },
+      {
+        "tag": "Muscle",
+        "patterns": ["Muscle"]
+      },
+      {
+        "tag": "Clothing",
+        "patterns": ["Clothing", "Footwear", "Accessories", "Eyewear", "Fashion", "Beachwear", "Leggings", "Shoes", "Boots", "Casual", "Professional", "Stylish", "Trendy", "Lifestyle", "Outerwear", "Gloves"]
+      },
+      {
+        "tag": "Trekking",
+        "patterns": ["Outdoors", "Trekking", "Backpacking", "Climbing", "Hiking", "Camping", "Snowboarding", "Hammocking", "Rock Climbing", "Mountaineering", "Winter", "Outdoor", "Beach", "Adventure", "Survival", "Gear", "Lantern", "Helmet", "Rainwear", "Insulation", "Camping Gear", "Backpack", "Towel", "UV Protection"]
+      },
+      {
+        "tag": "Oral Care",
+        "patterns": ["Oral Care", "Shaving", "Brushing", "Dental Care", "Personal Care", "Grooming", "Grooming Tools", "Hygiene", "Health"]
+      },
+      {
+        "tag": "Massage",
+        "patterns": ["Massage", "Relaxation"]
+      },
+      {
+        "tag": "Large",
+        "patterns": ["Large"]
+      },
+      {
+        "tag": "Equipment",
+        "patterns": ["Equipment"]
+      },
+      {
+        "tag": "Stability",
+        "patterns": ["Stability"]
+      },
+      {
+        "tag": "Drinks",
+        "patterns": ["Drinks", "Cafe"]
+      },
+      {
+        "tag": "Healthy Eating",
+        "patterns": ["Healthy Eating"]
+      },
+      {
+        "tag": "Study",
+        "patterns": ["Study"]
+      },
+      {
+        "tag": "Leak Proof",
+        "patterns": ["Leak Proof"]
+      },
+      {
+        "tag": "Bag",
+        "patterns": ["Bag", "Backpack"]
+      },
+      {
+        "tag": "Waterproof",
+        "patterns": ["Waterproof"]
+      },
+      {
+        "tag": "Lightweight",
+        "patterns": ["Lightweight"]
+      },
+      {
+        "tag": "Durable",
+        "patterns": ["Durable"]
+      },
+      {
+        "tag": "Stainless Steel",
+        "patterns": ["Stainless Steel"]
+      },
+      {
+        "tag": "Colors",
+        "patterns": ["Green", "Blue", "Gray", "White", "Black"]
+      },
+      {
+        "tag": "Ergonomic",
+        "patterns": ["Ergonomic"]
+      },
+      {
+        "tag": "Adjustable",
+        "patterns": ["Adjustable"]
+      },
+      {
+        "tag": "Easy to Clean",
+        "patterns": ["Easy to Clean"]
+      },
+      {
+        "tag": "Fast Charging",
+        "patterns": ["Fast Charging", "Rechargeable", "Battery Operated"]
+      },
+      {
+        "tag": "Multi-Use",
+        "patterns": ["Multi-Use", "Utility", "Convenience"]
+      },
+      {
+        "tag": "Non-Slip",
+        "patterns": ["Non-Slip"]
+      },
+      {
+        "tag": "Hiking",
+        "patterns": ["Hiking"]
+      },
+      {
+        "tag": "Cycling",
+        "patterns": ["Cycling", "Biking"]
+      },
+      {
+        "tag": "Yoga",
+        "patterns": ["Yoga"]
+      },
+      {
+        "tag": "Easy to Use",
+        "patterns": ["Easy to Use", "Portable"]
+      },
+      {
+        "tag": "Comfortable",
+        "patterns": ["Comfortable"]
+      },
+      {
+        "tag": "Odor Control",
+        "patterns": ["Odor Control"]
+      },
+      {
+        "tag": "Breathable",
+        "patterns": ["Breathable"]
+      },
+      {
+        "tag": "Quick Dry",
+        "patterns": ["Quick Dry"]
+      },
+      {
+        "tag": "Reusable",
+        "patterns": ["Reusable"]
+      },
+      {
+        "tag": "Reusable Straws",
+        "patterns": ["Reusable Straws"]
+      },
+      {
+        "tag": "Dishwasher Safe",
+        "patterns": ["Dishwasher Safe"]
+      },
+      {
+        "tag": "Travel",
+        "patterns": ["Travel"]
+      },
+      {
+        "tag": "Vehicle",
+        "patterns": ["Vehicle"]
+      }
     ]
-}
+  }
+  

@@ -60,7 +60,7 @@ function SignUp(){
                     <br />
                     <br />
                     <br />     
-                    <form action='signup' method='POST'>
+                    <form action='/signup' method='POST'>
                         <div className="mb-3">
                         <div className="form-floating mb-3">
                             <input required name="username" type="text" className="form-control" id="floatingInput" placeholder="john.appleseed"/>
