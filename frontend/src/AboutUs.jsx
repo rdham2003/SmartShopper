@@ -97,7 +97,48 @@ function AboutUs(){
                 </header>
                 <div id="about_body">
                     <div class="card">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eum similique ipsa reprehenderit voluptas voluptate sint harum. Necessitatibus tempora tempore neque omnis similique, quos nihil soluta aliquam, voluptas quod ipsum?</h1>
+                        <h1>About Us</h1>
+                        <br />
+                        <h2>Welcome to SmartShopper!</h2>
+                        <br />
+                        <h4>At SmartShopper, we believe in leveraging the power of technology to enhance your shopping experience. Our platform is designed to understand your preferences and recommend products that fit your unique lifestyle. Whether you're a tech enthusiast, a fitness buff, a fashionista, or a home decor aficionado, SmartShopper has something special for you.</h4>
+                        <br />
+                        <hr />
+                        <br />
+                        <h1>Our Story</h1>
+                        <br />
+                        <h4>SmartShopper was born out of a passion for innovation and a desire to make online shopping more intuitive and enjoyable. Our founder, a Computer Science Junior at the University of Minnesota, combined expertise in artificial intelligence, machine learning, and web development to create a platform that anticipates your needs and helps you discover new products effortlessly.</h4>
+                        <br />
+                        <hr />
+                        <br />
+                        <h1>Our Technology</h1>
+                        <br /> 
+                        <h4>We utilize cutting-edge machine learning algorithms to analyze your interests and past purchases. Our hybrid recommendation system includes:</h4>
+                        <ol>
+                            <li><b>Interest-Based Recommendations:</b> A survey collects information about your hobbies and preferences, allowing our model to suggest items tailored to your tastes.</li>
+                            <li><b>Search Recommendations:</b> The Neural Network Searchbar is an advanced search tool that uses neural networks to provide highly relevant search results. It goes beyond traditional keyword matching by understanding the context and intent behind user queries.</li>
+                            <li><b>AI Chatbot Support:</b> The AI chatbot support system is designed to enhance user interaction and provide efficient solutions. It leverages natural language processing (NLP) and machine learning (ML) to understand and respond to user queries accurately.</li>
+                        </ol>
+                        <br />
+                        <hr />
+                        <br />
+                        <h1>Our Mission</h1>
+                        <br />
+                        <h4>Our mission is to provide a seamless and personalized shopping experience. We aim to save you time and effort by bringing the products you love right to your fingertips. With SmartShopper, you can explore new items, find great deals, and enjoy a hassle-free shopping journey.</h4>
+                        <br />
+                        <hr />
+                        <br />
+                        <h1>Meet the Founder</h1>
+                        <br />
+                        <h4>Our founder is a dedicated student majoring in Computer Science and Business Management at the University of Minnesota. With a strong background in AI/ML and a passion for full-stack development, he has built SmartShopper to showcase the best of technology in e-commerce. He is constantly working to improve the platform and integrate new features that enhance user experience.</h4>
+                        <br />
+                        <hr />
+                        <br />
+                        <h1>Join Us</h1>
+                        <br />
+                        <h4>We are excited to have you as part of our community. Whether you're here to find your next favorite gadget or to explore new fashion trends, SmartShopper is here to make your shopping experience smarter and more enjoyable.</h4>
+                        <br />
+                        <h4>Thank you for choosing SmartShopper. Happy shopping!</h4>
                     </div>
                 </div>
             </div>

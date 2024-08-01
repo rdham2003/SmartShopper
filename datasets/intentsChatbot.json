@@ -1,0 +1,199 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": [
+          "Hi",
+          "Hello",
+          "Hey",
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "What's up?",
+          "How are you?"
+        ],
+        "responses": [
+          "Hello! How can I assist you today?",
+          "Hi there! What can I help you with?",
+          "Hey! How can I make your day better?",
+          "Good day! How can I assist you?"
+        ]
+      },
+      {
+        "tag": "farewell",
+        "patterns": [
+          "Goodbye",
+          "See you later",
+          "Bye",
+          "Take care",
+          "Have a great day",
+          "See you soon"
+        ],
+        "responses": [
+          "Goodbye! Have a wonderful day!",
+          "See you later! If you need anything else, just ask.",
+          "Bye! Feel free to reach out if you have more questions.",
+          "Take care! Have a great day ahead!"
+        ]
+      },
+      {
+        "tag": "search",
+        "patterns": [
+          "I want to search for products",
+          "Show me products",
+          "Find me items",
+          "Search for {product}",
+          "Look up {product}",
+          "Search for {category} products",
+          "Find products in {category}",
+          "Show me {product}"
+        ],
+        "responses": [
+          "Sure! What product or category are you looking for?",
+          "I can help with that. What product or category should I search for?",
+          "Let me find that for you. Please provide the product or category."
+        ]
+      },
+      {
+        "tag": "product_info",
+        "patterns": [
+          "Tell me more about {product}",
+          "What is {product}?",
+          "Give me details on {product}",
+          "How does {product} work?",
+          "Tell me about the features of {product}",
+          "What are the specifications of {product}?"
+        ],
+        "responses": [
+          "Here's some information about {product}.",
+          "The details for {product} are as follows: [details].",
+          "Let me provide you with more information on {product}."
+        ]
+      },
+      {
+        "tag": "account_info",
+        "patterns": [
+          "What is my account info?",
+          "Show me my account details",
+          "How do I update my account?",
+          "Check my account status",
+          "Help me with my account",
+          "I need to update my profile",
+          "How can I change my password?"
+        ],
+        "responses": [
+          "I can help with your account details. Please provide your account information.",
+          "To update your account, please visit the account settings page.",
+          "For account-related queries, please log in to your account."
+        ]
+      },
+      {
+        "tag": "order_status",
+        "patterns": [
+          "Where is my order?",
+          "Check the status of my order",
+          "What is the status of my order?",
+          "Track my order",
+          "Help me with my order status"
+        ],
+        "responses": [
+          "I can check the status of your order. Please provide your order number.",
+          "To track your order, please enter your order number.",
+          "Let me find out the status of your order. Give me a moment."
+        ]
+      },
+      {
+        "tag": "return_policy",
+        "patterns": [
+          "What is your return policy?",
+          "How do I return a product?",
+          "Tell me about returns",
+          "Can I return an item?",
+          "What are the return guidelines?",
+          "How to return a product?"
+        ],
+        "responses": [
+          "Our return policy allows you to return products within 60 days.",
+          "You can return items by following our return process. Please visit the returns page for more details.",
+          "For information on returns, please check our return policy page."
+        ]
+      },
+      {
+        "tag": "payment_methods",
+        "patterns": [
+          "What payment methods do you accept?",
+          "How can I pay?",
+          "List of payment options",
+          "Tell me about payment methods",
+          "How do I pay for my order?"
+        ],
+        "responses": [
+          "We accept various payment methods including credit/debit cards, PayPal, and more.",
+          "You can pay using credit/debit cards, PayPal, and more."
+        ]
+      },
+      {
+        "tag": "promotions",
+        "patterns": [
+          "Are there any current promotions?",
+          "Tell me about discounts",
+          "What are the latest offers?",
+          "Show me the promotions",
+          "Do you have any special deals?"
+        ],
+        "responses": [
+          "We have several promotions running right now. Please refer to the \"Hot Deals\" tab for the latest offers.",
+          "Check out our current discounts and deals on the \"Hot Deals\" tab.",
+          "For information on current promotions, please refer to our \"Hot Deals\" tab page."
+        ]
+      },
+      {
+        "tag": "product_reviews",
+        "patterns": [
+          "What do customers say about {product}?",
+          "Show me reviews for {product}",
+          "Tell me the reviews of {product}",
+          "How is {product} rated?",
+          "Customer feedback on {product}"
+        ],
+        "responses": [
+          "Here are some reviews for {product}: [reviews].",
+          "The reviews for {product} are as follows: [reviews].",
+          "Let me show you the feedback for {product}."
+        ]
+      },
+      {
+        "tag": "general_inquiries",
+        "patterns": [
+          "I have a question",
+          "Can you help me?",
+          "I need assistance",
+          "I have an inquiry",
+          "Help me with something"
+        ],
+        "responses": [
+          "Sure, what do you need help with?",
+          "I’m here to assist you. What’s your question?",
+          "How can I assist you today?"
+        ]
+      },
+      {
+        "tag": "thank_you",
+        "patterns": [
+          "Thank you",
+          "Thanks",
+          "I appreciate it",
+          "Thanks a lot",
+          "Thank you very much",
+          "Thanks for your help"
+        ],
+        "responses": [
+          "You're welcome! If you need anything else, feel free to ask.",
+          "My pleasure! Let me know if there's anything more I can help with.",
+          "You're welcome! Have a great day!",
+          "I'm glad I could help! If you have more questions, just let me know."
+        ]
+      }
+    ]
+  }
+  

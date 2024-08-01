@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Fragment } from 'react';
 
-function SignUp(){
+function SignUp(props){
 
     const [pass, setPass] = useState("")
 
@@ -52,73 +53,85 @@ function SignUp(){
         document.getElementById("signup_container").style.display = "none"
     }
 
+    useEffect(() => {
+        if (props.signinErr){
+            document.getElementById("signup_error").style.display = "block"
+        }
+    }, [props.signinErr])
+    
     return (
-        <div id="signup_container" className="container mt-4">
-            <div className="card text-center">
-                <div className="card-body">
-                    <h1 className="card-title">Sign Up Page</h1>
-                    <br />
-                    <br />
-                    <br />     
-                    <form action='/signup' method='POST'>
-                        <div className="mb-3">
-                        <div className="form-floating mb-3">
-                            <input required name="username" type="text" className="form-control" id="floatingInput" placeholder="john.appleseed"/>
-                            <label htmlFor="floatingInput">Username</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input required name="email" type="text" className="form-control" id="floatingInput" placeholder="jappleseed@example.com"/>
-                            <label htmlFor="floatingInput">Email</label>
-                        </div>
-                        <div id="emailHelp" className="form-text">
-                            We'll never share your email with anyone else.
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input required name="phoneNumber" type="tel" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className="form-control" id="floatingInput"/>
-                            <label htmlFor="floatingInput">Phone Number</label>
-                        </div>
-                        <div id="emailHelp" className="form-text">
-                            Format: 123-456-7890
-                        </div>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input required name="password" type="password" value={pass} onChange={handleInputChange} className="form-control" id="password" placeholder="name@example.com"/>
-                            <label htmlFor="floatingInput">Password</label>
-                        </div>
-                            <div class="d-grid gap-2 d-md-block">
-                                <button onClick={genPass} type="button" class="btn btn-secondary">Generate Strong Password</button>
-                                <button onClick={passDisplay} type="button" class="btn btn-secondary">Show/Hide Password</button>
+        <Fragment>
+            <div id="signup_container" className="container mt-4">
+                <div className="card text-center">
+                    <div className="card-body">
+                        <h1 className="card-title">Sign Up Page</h1>
+                        <br />
+                        <br />
+                        <br />     
+                        <h2 id="signup_error" style={{color: "red"}}>Error: Username or email is already in use</h2>
+                        <form action='/signup' method='POST'>
+                            <div className="mb-3">
+                            <div className="form-floating mb-3">
+                                <input required name="username" type="text" className="form-control" id="floatingInput" placeholder="john.appleseed"/>
+                                <label htmlFor="floatingInput">Username</label>
                             </div>
+                            <div className="form-floating mb-3">
+                                <input required name="email" type="text" className="form-control" id="floatingInput" placeholder="jappleseed@example.com"/>
+                                <label htmlFor="floatingInput">Email</label>
+                            </div>
+                            <div id="emailHelp" className="form-text">
+                                We'll never share your email with anyone else.
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input required name="phoneNumber" type="tel" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className="form-control" id="floatingInput"/>
+                                <label htmlFor="floatingInput">Phone Number</label>
+                            </div>
+                            <div id="emailHelp" className="form-text">
+                                Format: 123-456-7890
+                            </div>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input required name="password" type="password" value={pass} onChange={handleInputChange} className="form-control" id="password" placeholder="name@example.com"/>
+                                <label htmlFor="floatingInput">Password</label>
+                            </div>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <button onClick={genPass} type="button" class="btn btn-secondary">Generate Strong Password</button>
+                                    <button onClick={passDisplay} type="button" class="btn btn-secondary">Show/Hide Password</button>
+                                </div>
 
-                        <div id="emailHelp" className="form-text">
-                                We'll never share your password with anyone else.
-                        </div>
-                        <br />
-                        <div id="two_container">
-                            <div class="form-check form-switch">
-                                <input name="twofactor" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Enable Two-Factor Authentication</label>
+                            <div id="emailHelp" className="form-text">
+                                    We'll never share your password with anyone else.
                             </div>
-                        </div>
-                        <br />
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                            Sign Up
-                        </button>
-                    </form>
-                </div>
-                <br />
-                <br />
-                <br />
-                <div className="card-footer text-body-secondary">
-                    Already have an account?
+                            <br />
+                            <div id="two_container">
+                                <div class="form-check form-switch">
+                                    <input name="twofactor" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Enable Two-Factor Authentication</label>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <button type="submit" className="btn btn-primary">
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
                     <br />
-                    <button className="btn btn-primary" onClick={switchSignLog}>
-                        Log In
-                    </button>
+                    <form action="/homepage" method='POST'>
+                        <button class="btn btn-primary" type="submit">Go to homepage</button>
+                    </form>
+                    <br />
+                    <br />
+                    <div className="card-footer text-body-secondary">
+                        Already have an account?
+                        <br />
+                        <button className="btn btn-primary" onClick={switchSignLog}>
+                            Log In
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+            </Fragment>
     )
 }
 

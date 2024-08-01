@@ -89,8 +89,9 @@ function HomePage(props) {
         }
     }, [props.survey]);
 
-    console.log(`Search: ${props.searchOn}`)
+    // console.log(`Search: ${props.searchOn}`)
     // console.log(document.getElementById("search_container").style.display)
+    console.log(`Sign in: ${props.signinErr}`)
 
     useEffect(() => {
         if (props.searchOn){
@@ -99,6 +100,8 @@ function HomePage(props) {
             document.getElementById("brands_container").style.display = "none"
             document.getElementById("customer_container").style.display = "none"
             document.getElementById("search_container").style.display = "block"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
         }
         else{
             document.getElementById("homePage").style.display = "block"
@@ -106,8 +109,52 @@ function HomePage(props) {
             document.getElementById("brands_container").style.display = "none"
             document.getElementById("customer_container").style.display = "none"
             document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
         }
     }, [props.searchOn])
+
+    useEffect(() => {
+        if (props.incPass){
+            document.getElementById("homePage").style.display = "none"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "block"
+            document.getElementById("signup_container").style.display = "none"
+        }
+        else{
+            document.getElementById("homePage").style.display = "block"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
+        }
+    }, [props.incPass])
+
+    useEffect(() => {
+        if (props.signinErr){
+            document.getElementById("homePage").style.display = "none"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "block"
+        }
+        else{
+            document.getElementById("homePage").style.display = "block"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
+        }
+    }, [props.signinErr])
 
     
     return (
@@ -244,8 +291,8 @@ function HomePage(props) {
             <AboutUs />
             <Brands />
             <CustomerSupport />
-            <LogIn />
-            <SignUp />
+            <LogIn incPass={props.incPass}/>
+            <SignUp signinErr={props.signinErr}/>
             <Search search={props.search}/>
         </Fragment>
     );

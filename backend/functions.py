@@ -200,10 +200,19 @@ def send_email(subject, body, receiver_email):
 
     server.sendmail(sender_email, receiver_email, message)
     print("Email Sent")
+
+def genCode():
+    code = []
+    for i in range(6):
+        code.append(str(random.randint(0,9)))
+        print(code)
+    return ''.join(code)
+        
     
 if __name__ == '__main__':
     # print(highestRated())
     # print(hotDeals())
     # print(recommendProd([21, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1]))
-    print(productSearch("Clothes"))
+    # print(productSearch("Clothes"))
     # createUserDB()
+    print(genCode())

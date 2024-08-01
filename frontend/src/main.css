@@ -67,3 +67,16 @@
     width: 200px;
     margin: auto;
 }
+
+#about_body{
+    text-align: center;
+}
+
+#error_login{
+    display: none;
+}
+
+#signup_error{
+    display: none
+}
+
