@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, send_from_directory, request, session
 from flask_cors import CORS
 import os
-from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response, genCode, send_email
+from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response, genCode, send_email, createUserDB
 import pickle
 import numpy as np
 import sqlite3
@@ -17,6 +17,7 @@ search_results = []
 searchOn = False
 incPass = False
 signinErr = False
+isLoggedIn = False
 
 @app.route('/')
 def serve():
@@ -32,6 +33,11 @@ def serve():
     global signinErr
     signinErr = False
     
+    global userName
+    userName = ''
+    
+    createUserDB()
+    
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api/data')
@@ -43,7 +49,9 @@ def get_info():
         "Search": search_results,
         "searchOn": searchOn,
         "incPass": incPass,
-        "signinErr": signinErr
+        "signinErr": signinErr,
+        "isLoggedIn": isLoggedIn,
+        "userName": userName
     }
     return jsonify(data)
 
@@ -134,6 +142,8 @@ def signup():
     print(users)
     
     global signinErr
+    global userName
+    global isLoggedIn
     
     for user in users:
         if (username in user) or (email in user):
@@ -142,9 +152,25 @@ def signup():
             return send_from_directory(app.static_folder, 'index.html')
     
     if(twofactor == "on"):
+        print(f"database/{username}DB.db")
+        newuserDB = sqlite3.connect(f"database/{username}DB.db")
+        newuserCur = newuserDB.cursor()
+        
+        createWishList = f'''CREATE TABLE IF NOT EXISTS {username}_wishlist (
+                            keyID INTEGER PRIMARY KEY AUTOINCREMENT,
+                            product TEXT,
+                            price FLOAT,
+                            rating FLOAT
+                            )'''
+                                    
+        newuserCur.execute(createWishList)
+        newuserDB.commit()
+        newuserDB.close()
+        
         two_factor = genCode()
         session['two_factor'] = two_factor
         send_email("Two factor", f'{two_factor} is your authorization code', email)
+        
         return send_from_directory(app.static_folder, 'twofact.html')
     else:
         query = "INSERT INTO user_database (username, email, phoneNumber, password, twofactor) VALUES (?,?,?,?,?)"
@@ -154,11 +180,28 @@ def signup():
         userDB.commit()
         userDB.close()
         
+        newuserDB = sqlite3.connect(f"database/{username}DB.db")
+        newuserCur = newuserDB.cursor()
+        
+        createWishList = f'''CREATE TABLE IF NOT EXISTS {username}_wishlist (
+                            keyID INTEGER PRIMARY KEY AUTOINCREMENT,
+                            product TEXT,
+                            price FLOAT,
+                            rating FLOAT
+                            )'''
+                                    
+        newuserCur.execute(createWishList)
+        newuserDB.commit()
+        newuserDB.close()
+        
         session.pop('username', None)
         session.pop('email', None)
         session.pop('phoneNo', None)
         session.pop('password', None)
         session.pop('twofactor', None)
+        
+        isLoggedIn = True
+        userName = username
         
         return send_from_directory(app.static_folder, "index.html")
 
@@ -169,6 +212,8 @@ def twofactor():
     
     global incPass
     global signinErr
+    global isLoggedIn
+    global userName
     
     twofact = request.form.get("twofact", '').strip()
     two_factor = str(session.get('two_factor', '')).strip()
@@ -195,11 +240,14 @@ def twofactor():
         
         incPass = False
         signinErr = False
+        isLoggedIn = True
+        userName = username
         
         return send_from_directory(app.static_folder, 'index.html')
     else:
         incPass = False
         signinErr = False
+        isLoggedIn = True
         return send_from_directory(app.static_folder, 'twofacterror.html')
 
 @app.route("/login", methods=["GET", "POST"])
@@ -214,6 +262,8 @@ def login():
     password = request.form.get("password").strip()
     
     global incPass
+    global isLoggedIn
+    global userName
     
     for user in users:
         print(user[1], user[2])
@@ -226,6 +276,8 @@ def login():
             else:
                 userDB.close()
                 incPass = False
+                isLoggedIn = True
+                userName = username
                 return send_from_directory(app.static_folder, 'index.html')
     
     userDB.close()

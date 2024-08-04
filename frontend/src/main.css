@@ -80,3 +80,14 @@
     display: none
 }
 
+#post_login{
+    display: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#wishlist_container{
+    display: none;
+}
+
+

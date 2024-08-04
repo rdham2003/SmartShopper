@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 
-function AboutUs(){
+function AboutUs(props){
+
+    console.log(`a;ofjakl;ghsg;jkh: ${props.isLoggedIn}`)
 
     function toHome(){
         document.getElementById("homePage").style.display = "block"
@@ -46,6 +48,25 @@ function AboutUs(){
         document.getElementById("search_container").style.display = "block"
       }
 
+      function toWishlist(){
+        document.getElementById("homePage").style.display = "none"
+        document.getElementById("aboutus_container").style.display = "none"
+        document.getElementById("brands_container").style.display = "none"
+        document.getElementById("customer_container").style.display = "none"
+        document.getElementById("wishlist_container").style.display = "block"
+    }
+
+    useEffect(() => {
+        if (props.isLoggedIn){
+            document.getElementById("login_button").style.display = "none"
+            document.getElementById("post_login").style.display = "block"
+        }
+        else {
+            document.getElementById("login_button").style.display = "block"
+            document.getElementById("post_login").style.display = "none"
+        }
+    })
+
     return (
         <Fragment>
             <div id="aboutus_container">
@@ -60,10 +81,10 @@ function AboutUs(){
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
                                 <li className="nav-item">
-                                    <button className="nav-link nav-item-link" aria-current="page" onClick={toHome}>Home</button>
+                                    <button className="nav-link active text-light" aria-current="page" onClick={toHome}>Home</button>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link active text-light" onClick={toAboutUs}>About Us</button>
+                                    <button className="nav-link nav-item-link" onClick={toAboutUs}>About Us</button>
                                 </li>
                                 <li className="nav-item">
                                     <button className="nav-link nav-item-link" onClick={toBrands}>Brands</button>
@@ -80,16 +101,30 @@ function AboutUs(){
                                     </button>
                                     <input className="form-control me-2" type="search" name="searchbar" placeholder="What are you looking for today..." aria-label="Search" style={{ minWidth: '800px' }} />
                                 </form>
-                                <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                                    <ul className="navbar-nav ms-auto">
-                                        <li className="nav-item dropdown">
-                                            <button type="button" class="btn btn-info" onClick={toLogin}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                                            </svg> Login</button>
-                                        </li>
+                                <div id='login_button'>
+                                    <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                        <ul className="navbar-nav ms-auto">
+                                            <li className="nav-item dropdown">
+                                                <button type="button" class="btn btn-info" onClick={toLogin}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                                                </svg> Login</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id='post_login'>
+                                <nav className="navbar navbar-expand-lg navbar-light bg-dark subtle mb-4">
+                                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
+                                        <li className="nav-item">
+                                            <button className="nav-link nav-item-link" onClick={toWishlist}>Wishlist</button>
+                                        </li> 
+                                        <li className="nav-item">
+                                            <button className="nav-link nav-item-link">Welcome {props.userName}</button>
+                                        </li>   
                                     </ul>
+                                </nav>
                                 </div>
                             </div>
                         </div>
