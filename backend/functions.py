@@ -28,6 +28,23 @@ sermodel = NeuralNetwork(input_size, hidden_size, output_size).to(torch.device('
 sermodel.load_state_dict(model_state)
 sermodel.eval()
 
+with(open('datasets/intentsChatbot.json')) as intent2:
+    intentsChatbot = json.load(intent2)
+    
+chatData = torch.load("chatbotModel.pth")
+
+input_sizeChat = data["input_sizeChat"]
+hidden_sizeChat = data["hidden_sizeChat"]
+output_sizeChat = data["output_sizeChat"]
+all_wordsChat = data["all_wordsChat"]
+tagsChat = data["tagsChat"]
+model_stateChat = data["model_stateChat"]
+
+chatModel = NeuralNetwork(input_sizeChat, hidden_sizeChat, output_sizeChat).to(torch.device('cpu'))
+chatModel.load_state_dict(model_stateChat)
+chatModel.eval()
+
+
 def highestRated():
     with(open('datasets/products.csv', 'r')) as products:
         prodList = products.readlines()[1:]
@@ -207,7 +224,29 @@ def genCode():
         code.append(str(random.randint(0,9)))
         print(code)
     return ''.join(code)
-        
+
+def chatBotConvo(message):
+    text = message
+    message = tokenize(message)
+    bag = bag_of_words(message, all_words)
+    bag = bag.reshape(1, bag.shape[0])
+    bag = torch.from_numpy(bag).float()
+    
+    output = sermodel(bag)
+    
+    _, predicted = torch.max(output, dim=1)
+    tag = tags[predicted.item()]
+    
+    probs = torch.softmax(output, dim=1)
+    probability = probs[0][predicted.item()]
+    
+    print(probability.item())
+    print(tag)
+    
+    if probability.item() >= 0.75:
+        for intent in intents["intents"]:
+            if tag == intent["tag"]:
+                search_tags = intent["patterns"]
     
 if __name__ == '__main__':
     # print(highestRated())
@@ -216,3 +255,4 @@ if __name__ == '__main__':
     # print(productSearch("Clothes"))
     # createUserDB()
     print(genCode())
+    

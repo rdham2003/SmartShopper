@@ -184,6 +184,19 @@ function HomePage(props) {
         }
     })
 
+    useEffect(() => {
+        if (props.inCustomerSupport){
+            document.getElementById("homePage").style.display = "none"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "block"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
+            document.getElementById("wishlist_container").style.display = "none"
+        }
+    })
+
     function toWishlist(){
         document.getElementById("homePage").style.display = "none"
         document.getElementById("aboutus_container").style.display = "none"
@@ -358,7 +371,7 @@ function HomePage(props) {
             <Survey />
             <AboutUs isLoggedIn={props.isLoggedIn} userName={props.userName}/>
             <Brands isLoggedIn={props.isLoggedIn} userName={props.userName}/>
-            <CustomerSupport isLoggedIn={props.isLoggedIn} userName={props.userName}/>
+            <CustomerSupport isLoggedIn={props.isLoggedIn} userName={props.userName} chats={props.chats}/>
             <LogIn incPass={props.incPass}/>
             <SignUp signinErr={props.signinErr}/>
             <Search search={props.search} isLoggedIn={props.isLoggedIn} userName={props.userName}/>

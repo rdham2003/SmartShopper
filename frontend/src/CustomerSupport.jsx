@@ -64,6 +64,13 @@ function CustomerSupport(props){
             document.getElementById("post_login").style.display = "none"
         }
     })
+
+    const [newChat, setNewChat] = useState("");
+
+    function handleInputChange(event){
+        setNewChat(event.target.value);
+    }
+
     return (
         <Fragment>
             <div id="customer_container">
@@ -128,8 +135,23 @@ function CustomerSupport(props){
                     </nav>
                 </header>
                 <div id="customer_body">
-                    <div class="card">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eum similique ipsa reprehenderit voluptas voluptate sint harum. Necessitatibus tempora tempore neque omnis similique, quos nihil soluta aliquam, voluptas quod ipsum?</h1>
+                    <div id="just_center">
+                        <form action="/ChatbotConvo">
+                            <div id="chatroom_container">
+                                <h1>Customer Support AI: </h1>
+                                <div id="chatroom">
+                                    <ul id="chats">
+                                        {props.chats.map((chat, idx) =>
+                                            <li style={{ backgroundColor: idx % 2 === 0 ? '#3498db' : 'gray' }} key={idx}>{chat}</li>
+                                        )}
+                                    </ul>
+                                    <br />
+                                    <br />
+                                    <input type="text" placeholder='Type to chat...' value={newChat} onChange={handleInputChange} id="chatPost"/>
+                                    <button type="submit" id="chatSend">⬆️</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

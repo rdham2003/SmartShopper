@@ -94,12 +94,12 @@ for epoch in range(num_epochs):
         
 #Saving the Model
 data = {
-    "model_state": searchModel.state_dict(),
-    "input_size": input_size,
-    "output_size": output_size,
-    "hidden_size": hidden_size,
-    "all_words": all_words,
-    "tags": tags
+    "model_stateChat": searchModel.state_dict(),
+    "input_sizeChat": input_size,
+    "output_sizeChat": output_size,
+    "hidden_sizeChat": hidden_size,
+    "all_wordsChat": all_words,
+    "tagsChat": tags
 }
 
 torch.save(data, 'chatbotModel.pth')

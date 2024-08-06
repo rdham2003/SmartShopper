@@ -7,7 +7,7 @@ import Survey from './Survey';
 import Search from './Search';
 
 function App() {
-  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": [], "searchOn": false, "incPass": false, "signinErr": false, "isLoggedIn": false, "userName": '', "wishList": [], "onWishList": false});
+  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": [], "searchOn": false, "incPass": false, "signinErr": false, "isLoggedIn": false, "userName": '', "wishList": [], "onWishList": false, "chats": [], "inCustomerSupport": false});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <Fragment>
-      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search = {data.Search} searchOn = {data.searchOn} incPass = {data.incPass} signinErr = {data.signinErr} isLoggedIn = {data.isLoggedIn} userName = {data.userName} wishList = {data.wishList} onWishList={data.onWishList}/>
+      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search = {data.Search} searchOn = {data.searchOn} incPass = {data.incPass} signinErr = {data.signinErr} isLoggedIn = {data.isLoggedIn} userName = {data.userName} wishList = {data.wishList} onWishList={data.onWishList} chats={data.chats} inCustomerSupport={data.inCustomerSupport}/>
     </Fragment>
   );
 }

@@ -21,6 +21,8 @@ isLoggedIn = False
 wishList = []
 onWishList = False
 userName = ''
+chats = ["Hello! How can I help you today?"]
+inCustomerSupport = False
 
 @app.route('/')
 def serve():
@@ -56,7 +58,9 @@ def get_info():
         "isLoggedIn": isLoggedIn,
         "userName": userName,
         "wishList": wishList,
-        "onWishList": onWishList
+        "onWishList": onWishList,
+        "chats": chats,
+        "inCustomerSupport": inCustomerSupport
     }
     return jsonify(data)
 
