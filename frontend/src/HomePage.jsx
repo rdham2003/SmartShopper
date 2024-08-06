@@ -13,6 +13,9 @@ function HomePage(props) {
 
     const deals = [0.5,0.6,0.7,0.8]
 
+    console.log(`Logged in?: ${props.isLoggedIn}`)
+    console.log(`Username: ${props.userName}`)
+
     function takeSurvey(){
         document.getElementById("homePage").style.display = "none";
         document.getElementById("survey_container").style.display = "block"
@@ -61,8 +64,8 @@ function HomePage(props) {
         document.getElementById("login_container").style.display = "block"
       }
 
-      console.log(`Survey products: ${props.survey}`)
-      console.log(props.survey.length)
+    //   console.log(`Survey products: ${props.survey}`)
+    //   console.log(props.survey.length)
       
     //   function showSurvey(){
     //     if (props.survey.length === 0){
@@ -92,7 +95,7 @@ function HomePage(props) {
 
     // console.log(`Search: ${props.searchOn}`)
     // console.log(document.getElementById("search_container").style.display)
-    console.log(`Sign in: ${props.signinErr}`)
+    // console.log(`Sign in: ${props.signinErr}`)
 
     useEffect(() => {
         if (props.searchOn){
@@ -166,6 +169,19 @@ function HomePage(props) {
             document.getElementById("login_button").style.display = "block"
             document.getElementById("post_login").style.display = "none"
         }
+    }, [props.isLoggedIn])
+
+    useEffect(() => {
+        if (props.onWishList){
+            document.getElementById("homePage").style.display = "none"
+            document.getElementById("aboutus_container").style.display = "none"
+            document.getElementById("brands_container").style.display = "none"
+            document.getElementById("customer_container").style.display = "none"
+            document.getElementById("search_container").style.display = "none"
+            document.getElementById("login_container").style.display = "none"
+            document.getElementById("signup_container").style.display = "none"
+            document.getElementById("wishlist_container").style.display = "block"
+        }
     })
 
     function toWishlist(){
@@ -219,7 +235,7 @@ function HomePage(props) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                                                </svg> Login</button>
+                                                </svg>Login</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -259,19 +275,24 @@ function HomePage(props) {
                         <div id="recommend_container2">
                             {props.survey.map((item, index) => (
                                 <div key={index} className="card" style={{ width: '18rem' }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">{item[0]}</h5>
-                                </div>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">${item[1]}</li>
-                                    <li className="list-group-item">Rating: {item[2]} ⭐</li>
-                                </ul>
-                                <div className="card-body">
-                                        <form action="/wishlistadd" method='POST'>
-                                            <button type="submit" class="btn btn-success"><small className="text-body-secondary">Add to wishlist</small></button>
-                                        </form>
-                                </div>
+                                    <form action="/wishlistadd" method="POST">
+                                        <img src="..." className="card-img-top" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{item[0]}</h5>
+                                            <input type="hidden" name="prodName" value={item[0]} />
+                                        </div>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item">${item[1]}</li>
+                                            <input type="hidden" name="prodPrice" value={item[1]} />
+                                            <li className="list-group-item">Rating: {item[2]} ⭐</li>
+                                            <input type="hidden" name="prodRate" value={item[2]} />
+                                        </ul>
+                                        <div className="card-body">
+                                            <button type="submit" className="btn btn-success">
+                                                <small className="text-body-secondary">Add to wishlist</small>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             ))}
                         </div>
@@ -282,19 +303,24 @@ function HomePage(props) {
                         <div id="recommend_container">
                             {props.rated.map((item, index) => (
                                 <div key={index} className="card" style={{ width: '18rem' }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">{item[0]}</h5>
-                                </div>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">${item[1]}</li>
-                                    <li className="list-group-item">Rating: {item[2]} ⭐</li>
-                                </ul>
-                                <div className="card-body">
-                                        <form action="/wishlistadd" method='POST'>
-                                            <button type="submit" class="btn btn-success"><small className="text-body-secondary">Add to wishlist</small></button>
-                                        </form>
-                                </div>
+                                    <form action="/wishlistadd" method="POST">
+                                        <img src="..." className="card-img-top" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{item[0]}</h5>
+                                            <input type="hidden" name="prodName" value={item[0]} />
+                                        </div>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item">${item[1]}</li>
+                                            <input type="hidden" name="prodPrice" value={item[1]} />
+                                            <li className="list-group-item">Rating: {item[2]} ⭐</li>
+                                            <input type="hidden" name="prodRate" value={item[2]} />
+                                        </ul>
+                                        <div className="card-body">
+                                            <button type="submit" className="btn btn-success">
+                                                <small className="text-body-secondary">Add to wishlist</small>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             ))}
                         </div>
@@ -304,22 +330,27 @@ function HomePage(props) {
                         <p class="fs-1">Hot Deals 🔥</p>
                         <div id="recommend_container">
                         {props.deals.map((item, index) => (
-                                <div key={index} className="card" style={{ width: '18rem' }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">{item[0]}</h5>
-                                </div>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item"><s>${item[1]}</s> ${Math.round((item[1] * (deals[Math.round(Math.random() * 3)])) * 100) / 100}</li>
-                                    <li className="list-group-item">Rating: {item[2]} ⭐</li>
-                                </ul>
-                                <div className="card-body">
-                                        <form action="/wishlistadd" method='POST'>
-                                            <button type="submit" class="btn btn-success"><small className="text-body-secondary">Add to wishlist</small></button>
-                                        </form>
-                                </div>
-                                </div>
-                            ))}
+                            <div key={index} className="card" style={{ width: '18rem' }}>
+                                <form action="/wishlistadd" method="POST">
+                                    <img src="..." className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{item[0]}</h5>
+                                        <input type="hidden" name="prodName" value={item[0]} />
+                                    </div>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">${item[1]}</li>
+                                        <input type="hidden" name="prodPrice" value={item[1]} />
+                                        <li className="list-group-item">Rating: {item[2]} ⭐</li>
+                                        <input type="hidden" name="prodRate" value={item[2]} />
+                                    </ul>
+                                    <div className="card-body">
+                                        <button type="submit" className="btn btn-success">
+                                            <small className="text-body-secondary">Add to wishlist</small>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        ))}
                         </div>
                     </div>
                 </div>
@@ -331,7 +362,7 @@ function HomePage(props) {
             <LogIn incPass={props.incPass}/>
             <SignUp signinErr={props.signinErr}/>
             <Search search={props.search} isLoggedIn={props.isLoggedIn} userName={props.userName}/>
-            <Wishlist isLoggedIn={props.isLoggedIn} userName={props.userName}/>
+            <Wishlist isLoggedIn={props.isLoggedIn} userName={props.userName} wishList={props.wishList}/>
         </Fragment>
     );
 }

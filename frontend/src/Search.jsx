@@ -148,16 +148,24 @@ function Search(props){
                         {props.search.map((item, index) => (
                             <div key={index} className="col">
                                 <div className="card h-100" style={{ width: '18rem' }}>
+                                <form action="/wishlistadd" method="POST">
+                                    <img src="..." className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{item[0]}</h5>
-                                        <p className="card-text">{item[2]} ⭐</p>
+                                        <input type="hidden" name="prodName" value={item[0]} />
                                     </div>
-                                    <div className="card-footer">
-                                        <small className="text-body-secondary">${item[1]}</small>
-                                        <form action="/wishlistadd" method='POST'>
-                                            <button type="submit" class="btn btn-success"><small className="text-body-secondary">Add to wishlist</small></button>
-                                        </form>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">${item[1]}</li>
+                                        <input type="hidden" name="prodPrice" value={item[1]} />
+                                        <li className="list-group-item">Rating: {item[2]} ⭐</li>
+                                        <input type="hidden" name="prodRate" value={item[2]} />
+                                    </ul>
+                                    <div className="card-body">
+                                        <button type="submit" className="btn btn-success">
+                                            <small className="text-body-secondary">Add to wishlist</small>
+                                        </button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         ))}

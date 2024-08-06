@@ -77,7 +77,7 @@
 }
 
 #signup_error{
-    display: none
+    display: none;
 }
 
 #post_login{
@@ -88,6 +88,10 @@
 
 #wishlist_container{
     display: none;
+    text-align: center;
 }
 
+#wishlist_results{
+    display: none;
+}
 

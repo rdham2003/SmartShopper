@@ -7,14 +7,14 @@ import Survey from './Survey';
 import Search from './Search';
 
 function App() {
-  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": [], "searchOn": false, "incPass": false, "signinErr": false, "isLoggedIn": false, "userName": ''});
+  const [data, setData] = useState({ "Deals": [], "Rated": [], "Survey": [], "Search": [], "searchOn": false, "incPass": false, "signinErr": false, "isLoggedIn": false, "userName": '', "wishList": [], "onWishList": false});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/data");
         setData(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('There was an error fetching the data!', error);
       }
@@ -26,10 +26,11 @@ function App() {
   // console.log(data.Deals)
   // console.log(data.Rated)
   // console.log(data.Survey)
-  console.log(`Logged in?: ${data.isLoggedIn}`)
+  console.log(data.wishList)
+
   return (
     <Fragment>
-      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search = {data.Search} searchOn = {data.searchOn} incPass = {data.incPass} signinErr = {data.signinErr} isLoggedIn = {data.isLoggedIn} userName = {data.userName}/>
+      <HomePage rated={data.Rated} deals={data.Deals} survey={data.Survey} search = {data.Search} searchOn = {data.searchOn} incPass = {data.incPass} signinErr = {data.signinErr} isLoggedIn = {data.isLoggedIn} userName = {data.userName} wishList = {data.wishList} onWishList={data.onWishList}/>
     </Fragment>
   );
 }

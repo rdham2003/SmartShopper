@@ -18,6 +18,9 @@ searchOn = False
 incPass = False
 signinErr = False
 isLoggedIn = False
+wishList = []
+onWishList = False
+userName = ''
 
 @app.route('/')
 def serve():
@@ -33,8 +36,8 @@ def serve():
     global signinErr
     signinErr = False
     
-    global userName
-    userName = ''
+    global onWishList
+    onWishList = False
     
     createUserDB()
     
@@ -51,7 +54,9 @@ def get_info():
         "incPass": incPass,
         "signinErr": signinErr,
         "isLoggedIn": isLoggedIn,
-        "userName": userName
+        "userName": userName,
+        "wishList": wishList,
+        "onWishList": onWishList
     }
     return jsonify(data)
 
@@ -144,6 +149,7 @@ def signup():
     global signinErr
     global userName
     global isLoggedIn
+    global incPass
     
     for user in users:
         if (username in user) or (email in user):
@@ -202,6 +208,8 @@ def signup():
         
         isLoggedIn = True
         userName = username
+        incPass = False
+        signinErr = False
         
         return send_from_directory(app.static_folder, "index.html")
 
@@ -264,6 +272,7 @@ def login():
     global incPass
     global isLoggedIn
     global userName
+    global wishList
     
     for user in users:
         print(user[1], user[2])
@@ -278,6 +287,17 @@ def login():
                 incPass = False
                 isLoggedIn = True
                 userName = username
+                
+                wishDB = f'database/{userName}DB.db'
+                user_wishDB = sqlite3.connect(wishDB)
+                user_wishCur = user_wishDB.cursor()
+                
+                user_wishCur.execute(f"SELECT * from {userName}_wishlist")
+                user_wish = user_wishCur.fetchall()
+                user_wishDB.commit()
+                
+                wishList = user_wish
+                
                 return send_from_directory(app.static_folder, 'index.html')
     
     userDB.close()
@@ -289,10 +309,74 @@ def login():
 def homepageroute():
     global incPass
     global signinErr
+    global onWishList
     
     incPass = False
     signinErr = False
+    onWishList = False
     
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/wishlistadd', methods=["GET", "POST"])
+def add_to_wishlist():
+    name = request.form.get("prodName")
+    price = request.form.get("prodPrice")
+    rating = request.form.get("prodRate")
+    # item = [name, price, rating]
+    # print(item)
+    # global wishList
+    # wishList.append(item)
+    global userName
+    global wishList
+    
+    if userName != '':
+        wishDB = f'database/{userName}DB.db'
+        user_wishDB = sqlite3.connect(wishDB)
+        user_wishCur = user_wishDB.cursor()
+        query = f"INSERT INTO {userName}_wishlist (product, price, rating) VALUES (?,?,?)"
+        data = (name, price, rating)
+        print(data)
+        user_wishCur.execute(query, data)
+        
+        user_wishCur.execute(f"SELECT * from {userName}_wishlist")
+        user_wish = user_wishCur.fetchall()
+        user_wishDB.commit()
+        
+        print(user_wish)
+        wishList = user_wish
+        
+        user_wishDB.commit()
+        user_wishDB.close()
+            
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/deletewish', methods=["GET", "POST"])
+def delete_from_wishlist():
+    global onWishList
+    global wishList
+    onWishList = True
+    
+    prodName = request.form.get("product_name")
+    print(prodName)
+    
+    wishDB = f'database/{userName}DB.db'
+    user_wishDB = sqlite3.connect(wishDB)
+    user_wishCur = user_wishDB.cursor()
+    
+    user_wishCur.execute(f"SELECT * from {userName}_wishlist")
+    user_wish = user_wishCur.fetchall()
+    print(user_wish)
+    
+    query = f"DELETE FROM {userName}_wishList WHERE product= ?"
+    
+    user_wishCur.execute(query, (prodName,))
+    
+    user_wishCur.execute(f"SELECT * from {userName}_wishlist")
+    user_wish = user_wishCur.fetchall()
+    user_wishDB.commit()
+    
+    print(user_wish)
+    wishList = user_wish
     return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":

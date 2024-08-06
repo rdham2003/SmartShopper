@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 function AboutUs(props){
 
     console.log(`a;ofjakl;ghsg;jkh: ${props.isLoggedIn}`)
+    console.log(`qa;gfa: ${props.userName}`)
 
     function toHome(){
         document.getElementById("homePage").style.display = "block"
@@ -56,6 +57,8 @@ function AboutUs(props){
         document.getElementById("wishlist_container").style.display = "block"
     }
 
+    console.log(`Bruhtha: ${props.isLoggedIn}`)
+
     useEffect(() => {
         if (props.isLoggedIn){
             document.getElementById("login_button").style.display = "none"
@@ -65,7 +68,7 @@ function AboutUs(props){
             document.getElementById("login_button").style.display = "block"
             document.getElementById("post_login").style.display = "none"
         }
-    })
+    });
 
     return (
         <Fragment>
@@ -115,16 +118,16 @@ function AboutUs(props){
                                     </div>
                                 </div>
                                 <div id='post_login'>
-                                <nav className="navbar navbar-expand-lg navbar-light bg-dark subtle mb-4">
-                                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
-                                        <li className="nav-item">
-                                            <button className="nav-link nav-item-link" onClick={toWishlist}>Wishlist</button>
-                                        </li> 
-                                        <li className="nav-item">
-                                            <button className="nav-link nav-item-link">Welcome {props.userName}</button>
-                                        </li>   
-                                    </ul>
-                                </nav>
+                                    <nav className="navbar navbar-expand-lg navbar-light bg-dark subtle mb-4">
+                                        <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
+                                            <li className="nav-item">
+                                                <button className="nav-link nav-item-link" onClick={toWishlist}>Wishlist</button>
+                                            </li> 
+                                            <li className="nav-item">
+                                                <button className="nav-link nav-item-link">Welcome {props.userName}</button>
+                                            </li>   
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
