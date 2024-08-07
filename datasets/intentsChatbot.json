@@ -193,7 +193,17 @@
           "You're welcome! Have a great day!",
           "I'm glad I could help! If you have more questions, just let me know."
         ]
-      }
+      },
+      {
+        "tag": "login",
+        "patterns": ["How do I log in?", "Login instructions", "How can I log into my account?", "Log in help"],
+        "responses": ["To log in, click on the 'Login' button at the top right corner and enter your email and password.", "You can log in by clicking the 'Login' button on the top right and entering your credentials."]
+      },
+      {
+        "tag": "signup",
+        "patterns": ["How do I sign up?", "Sign up instructions", "How can I create an account?", "Register for an account"],
+        "responses": ["To sign up, click on the 'Sign Up' button at the top right corner and fill in your details.", "You can create an account by clicking the 'Sign Up' button on the top right and providing the required information."]
+      }      
     ]
   }
   

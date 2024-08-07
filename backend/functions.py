@@ -229,14 +229,14 @@ def genCode():
 def chatBotConvo(message):
     text = message
     message = tokenize(message)
-    bag = bag_of_words(message, all_words)
+    bag = bag_of_words(message, all_wordsChat)
     bag = bag.reshape(1, bag.shape[0])
     bag = torch.from_numpy(bag).float()
     
     output = Chatmodel(bag)
     
     _, predicted = torch.max(output, dim=1)
-    tag = tags[predicted.item()]
+    tag = tagsChat[predicted.item()]
     
     probs = torch.softmax(output, dim=1)
     probability = probs[0][predicted.item()]
@@ -244,10 +244,14 @@ def chatBotConvo(message):
     print(probability.item())
     print(tag)
     
+    response = "I'm not sure how to respond to that."
     if probability.item() >= 0.75:
-        for intent in intents["intents"]:
+        for intent in intentsChatbot["intents"]:
             if tag == intent["tag"]:
-                response = f'{random.choice(intent["responses"])}'
+                response = random.choice(intent["responses"])
+                break 
+    else:
+        response = "I'm not sure how to respond to that."
     
     return response
     
