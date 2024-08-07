@@ -136,7 +136,7 @@ function CustomerSupport(props){
                 </header>
                 <div id="customer_body">
                     <div id="just_center">
-                        <form action="/ChatbotConvo">
+                        <form action="/ChatbotConvo" method="POST">
                             <div id="chatroom_container">
                                 <h1>Customer Support AI: </h1>
                                 <div id="chatroom">
@@ -147,7 +147,7 @@ function CustomerSupport(props){
                                     </ul>
                                     <br />
                                     <br />
-                                    <input type="text" placeholder='Type to chat...' value={newChat} onChange={handleInputChange} id="chatPost"/>
+                                    <input required name="chatbot_prompt" type="text" placeholder='Type to chat...' value={newChat} onChange={handleInputChange} id="chatPost"/>
                                     <button type="submit" id="chatSend">⬆️</button>
                                 </div>
                             </div>

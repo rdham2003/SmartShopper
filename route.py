@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, send_from_directory, request, session
 from flask_cors import CORS
 import os
-from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response, genCode, send_email, createUserDB
+from backend.functions import highestRated, hotDeals, recommendProd, productSearch, get_response, genCode, send_email, createUserDB, chatBotConvo
 import pickle
 import numpy as np
 import sqlite3
@@ -40,6 +40,9 @@ def serve():
     
     global onWishList
     onWishList = False
+    
+    global inCustomerSupport
+    inCustomerSupport = False
     
     createUserDB()
     
@@ -111,6 +114,9 @@ def recommend():
     global signinErr
     signinErr = False
     
+    global inCustomerSupport
+    inCustomerSupport = False
+    
     return send_from_directory(app.static_folder, 'index.html')
     
 @app.route("/search", methods=["GET", "POST"])
@@ -124,6 +130,9 @@ def search():
     
     global searchOn
     searchOn = True
+    
+    global inCustomerSupport
+    inCustomerSupport = False
     
     return send_from_directory(app.static_folder, 'index.html')
 
@@ -154,6 +163,9 @@ def signup():
     global userName
     global isLoggedIn
     global incPass
+    
+    global inCustomerSupport
+    inCustomerSupport = False
     
     for user in users:
         if (username in user) or (email in user):
@@ -227,6 +239,9 @@ def twofactor():
     global isLoggedIn
     global userName
     
+    global inCustomerSupport
+    inCustomerSupport = False
+    
     twofact = request.form.get("twofact", '').strip()
     two_factor = str(session.get('two_factor', '')).strip()
     
@@ -278,6 +293,9 @@ def login():
     global userName
     global wishList
     
+    global inCustomerSupport
+    inCustomerSupport = False
+    
     for user in users:
         print(user[1], user[2])
         if user[1] == username and user[2] == password:
@@ -319,6 +337,9 @@ def homepageroute():
     signinErr = False
     onWishList = False
     
+    global inCustomerSupport
+    inCustomerSupport = False
+    
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/wishlistadd', methods=["GET", "POST"])
@@ -332,6 +353,9 @@ def add_to_wishlist():
     # wishList.append(item)
     global userName
     global wishList
+    
+    global inCustomerSupport
+    inCustomerSupport = False
     
     if userName != '':
         wishDB = f'database/{userName}DB.db'
@@ -360,6 +384,9 @@ def delete_from_wishlist():
     global wishList
     onWishList = True
     
+    global inCustomerSupport
+    inCustomerSupport = False
+    
     prodName = request.form.get("product_name")
     print(prodName)
     
@@ -382,6 +409,20 @@ def delete_from_wishlist():
     print(user_wish)
     wishList = user_wish
     return send_from_directory(app.static_folder, 'index.html')
+
+@app.route("/ChatbotConvo", methods=["GET", "POST"])
+def chatbotresponse():
+    global chats
+    global inCustomerSupport
+    
+    question = request.form.get("chatbot_prompt")
+    chats.append(question)
+    print(chats)
+    chats.append(chatBotConvo(question))
+    inCustomerSupport = True
+    
+    return send_from_directory(app.static_folder, 'index.html')
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

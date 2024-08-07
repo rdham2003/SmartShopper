@@ -7,6 +7,7 @@ import torch
 import json
 from backend.searchData.NN import NeuralNetwork
 from backend.searchData.NLP import tokenize, stemming, bag_of_words
+from backend.ChatbotData.NN import NeuralNetwork2
 import smtplib
 
 
@@ -33,16 +34,16 @@ with(open('datasets/intentsChatbot.json')) as intent2:
     
 chatData = torch.load("chatbotModel.pth")
 
-input_sizeChat = data["input_sizeChat"]
-hidden_sizeChat = data["hidden_sizeChat"]
-output_sizeChat = data["output_sizeChat"]
-all_wordsChat = data["all_wordsChat"]
-tagsChat = data["tagsChat"]
-model_stateChat = data["model_stateChat"]
+input_sizeChat = chatData["input_sizeChat"]
+hidden_sizeChat = chatData["hidden_sizeChat"]
+output_sizeChat = chatData["output_sizeChat"]
+all_wordsChat = chatData["all_wordsChat"]
+tagsChat = chatData["tagsChat"]
+model_stateChat = chatData["model_stateChat"]
 
-chatModel = NeuralNetwork(input_sizeChat, hidden_sizeChat, output_sizeChat).to(torch.device('cpu'))
-chatModel.load_state_dict(model_stateChat)
-chatModel.eval()
+Chatmodel = NeuralNetwork2(input_sizeChat, hidden_sizeChat, output_sizeChat).to(torch.device('cpu'))
+Chatmodel.load_state_dict(model_stateChat)
+Chatmodel.eval()
 
 
 def highestRated():
@@ -232,7 +233,7 @@ def chatBotConvo(message):
     bag = bag.reshape(1, bag.shape[0])
     bag = torch.from_numpy(bag).float()
     
-    output = sermodel(bag)
+    output = Chatmodel(bag)
     
     _, predicted = torch.max(output, dim=1)
     tag = tags[predicted.item()]
@@ -246,7 +247,9 @@ def chatBotConvo(message):
     if probability.item() >= 0.75:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                search_tags = intent["patterns"]
+                response = f'{random.choice(intent["responses"])}'
+    
+    return response
     
 if __name__ == '__main__':
     # print(highestRated())
