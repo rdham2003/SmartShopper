@@ -85,7 +85,7 @@ function CustomerSupport(props){
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="navbaritems">
                                 <li className="nav-item">
-                                    <button className="nav-link active text-light" aria-current="page" onClick={toHome}>Home</button>
+                                    <button className="nav-link nav-item-link" aria-current="page" onClick={toHome}>Home</button>
                                 </li>
                                 <li className="nav-item">
                                     <button className="nav-link nav-item-link" onClick={toAboutUs}>About Us</button>
@@ -94,7 +94,7 @@ function CustomerSupport(props){
                                     <button className="nav-link nav-item-link" onClick={toBrands}>Brands</button>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link nav-item-link" onClick={toCustomerSupport}>Chatbot Customer Support</button>
+                                    <button className="nav-link active text-light" onClick={toCustomerSupport}>Chatbot Customer Support</button>
                                 </li>
                             </ul>
                                 <form className="d-flex" action="/search" method="POST">
