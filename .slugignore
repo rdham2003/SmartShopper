@@ -168,3 +168,6 @@ build/
 dist/
 *.log
 *.tmp
+
+datasets/*.json
+datasets/*.csv
