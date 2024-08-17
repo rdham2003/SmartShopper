@@ -163,3 +163,8 @@ cython_debug/
 
 # *.pkl
 # *.pth
+
+build/
+dist/
+*.log
+*.tmp
